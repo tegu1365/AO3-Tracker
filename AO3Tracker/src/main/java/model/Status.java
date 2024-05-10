@@ -1,31 +1,13 @@
 package model;
 
+public enum Status {
+    ongoing("ongoing"),
+    complete("complete"),
+    onHold("onHold");
 
-import jakarta.persistence.Entity;
-import lombok.Data;
+    String value;
 
-@Data
-@Entity
-public class Status
-{
-    private Integer id;
-    private String name;
-
-    public Integer getId()
-    {
-        return id;
-    }
-    public void setId(Integer id)
-    {
-        this.id = id;
-    }
-
-    public String getName()
-    {
-        return name;
-    }
-    public void setName(String name)
-    {
-        this.name = name;
+    Status(String value) {
+        this.value = value;
     }
 }

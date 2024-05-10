@@ -1,17 +1,31 @@
 package model;
 
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import lombok.Data;
+import org.springframework.data.annotation.Id;
 
 @Data
 @Entity
 public class User
 {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
+    @Column(name="username")
     private String username;
+
+    @Column(name="email")
     private String email;
+
+    @Column(name="password")
     private String password;
+
+
 
     public Integer getId()
     {

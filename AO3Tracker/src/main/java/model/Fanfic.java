@@ -3,25 +3,54 @@ package model;
 import java.util.Date;
 
 
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 import lombok.Data;
+import org.springframework.data.annotation.Id;
 
 @Data
 @Entity
 public class Fanfic
 {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
+    @Column(name="title")
     private String title;
-    private String autor;
+
+    @Column(name="author")
+    private String author;
+
+    @Column(name="url")
     private String url;
+
+    @Column(name="fandom")
     private String fandom;
+
+    @Column(name="summary")
     private String summary;
+
+    @Column(name="date_started")
     private Date date_started;
+
+    @Column(name="data_uploaded")
     private Date data_uploaded;
+
+    @Column(name="chapter_currently")
     private Integer chapter_currently;
+
+    @Column(name="chapter_expected")
     private String chapter_expected;
-    private Integer status;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name="status")
+    private Status status; // make enum
+
+    @Column(name="word_count")
     private Integer word_count; // could be a function
+
+
+
 
 
     public Integer getId()
@@ -44,11 +73,11 @@ public class Fanfic
 
     public String getAutor()
     {
-        return autor;
+        return author;
     }
     public void setAutor(String autor)
     {
-        this.autor = autor;
+        this.author = autor;
     }
 
     public String getUrl()
@@ -114,11 +143,11 @@ public class Fanfic
         this.chapter_expected = chapter_expected;
     }
 
-    public Integer getStatus()
+    public Status getStatus()
     {
         return status;
     }
-    public void setStatus(Integer status)
+    public void setStatus(Status status)
     {
         this.status = status;
     }

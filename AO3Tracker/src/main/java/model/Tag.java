@@ -1,31 +1,6 @@
 package model;
 
+public enum Tag {
 
-import jakarta.persistence.Entity;
-import lombok.Data;
-
-@Data
-@Entity
-public class Tag
-{
-    private Integer id;
-    private String name;
-
-    public Integer getId()
-    {
-        return id;
-    }
-    public void setId(Integer id)
-    {
-        this.id = id;
-    }
-
-    public String getName()
-    {
-        return name;
-    }
-    public void setName(String name)
-    {
-        this.name = name;
-    }
+    //тук вече ги добави ти незнам какви трябва да са
 }

@@ -3,20 +3,38 @@ package model;
 import java.util.Date;
 
 
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 import lombok.Data;
+import org.springframework.data.annotation.Id;
 
 @Data
 @Entity
 public class Library
 {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private  Integer id;
-    private  Integer user_id;
-    private  Integer fanfic_id;
+
+    @Column(name="user_id")
+    private  Integer user_id; // one to many
+
+    @Column(name="fanfic_id")
+    private  Integer fanfic_id; // one to many
+
+    @Column(name="read_chapters")
     private  Integer read_chapters;
+
+    @Column(name="started_date")
     private Date started_date;
+
+    @Column(name="last_read")
     private Date last_read;
-    private Integer tag;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name="tag")
+    private Tag tag; // make enum
+
+
 
     public Integer getId()
     {
@@ -72,11 +90,11 @@ public class Library
         this.last_read = last_read;
     }
 
-    public Integer getTag()
+    public Tag getTag()
     {
         return tag;
     }
-    public void setTag(Integer tag)
+    public void setTag(Tag tag)
     {
         this.tag = tag;
     }
