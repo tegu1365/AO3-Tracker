@@ -1,12 +1,11 @@
 package model;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import jakarta.persistence.*;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
+
+import java.util.List;
 
 @Data
 @Entity
@@ -25,7 +24,13 @@ public class Collection
     @Column(name="description")
     private String description;
 
-
+    @Column(name="fanfics")
+    @ManyToMany
+    @JoinTable(
+            name = "collection_fanfic",
+            joinColumns = @JoinColumn(name = "fanfic_id"),
+            inverseJoinColumns = @JoinColumn(name = "collection_id"))
+    private List<Fanfic> fanfics;
 
 
     public Integer getId()

@@ -1,10 +1,9 @@
 package model;
 
+import java.util.List;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+
+import jakarta.persistence.*;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 
@@ -18,6 +17,14 @@ public class CustomTag
 
     @Column(name="name")
     private String name;
+
+    @Column(name = "libraries")
+    @ManyToMany
+    @JoinTable(
+            name = "customTag_library",
+            joinColumns = @JoinColumn(name = "library_id"),
+            inverseJoinColumns = @JoinColumn(name = "customtag_id"))
+    private List<Library> libraries;
 
 
 
@@ -37,5 +44,12 @@ public class CustomTag
     public void setName(String name)
     {
         this.name = name;
+    }
+
+    public List<Library> getLibraries() {
+        return libraries;
+    }
+    public void setLibraries(List<Library> libraries) {
+        this.libraries = libraries;
     }
 }

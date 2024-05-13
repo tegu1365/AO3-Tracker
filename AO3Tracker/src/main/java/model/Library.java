@@ -1,6 +1,7 @@
 package model;
 
 import java.util.Date;
+import java.util.List;
 
 
 import jakarta.persistence.*;
@@ -16,9 +17,13 @@ public class Library
     private  Integer id;
 
     @Column(name="user_id")
+    @ManyToOne
+    @JoinColumn(name="user_id")
     private  Integer user_id; // one to many
 
     @Column(name="fanfic_id")
+    @ManyToOne
+    @JoinColumn(name="fanfic_id")
     private  Integer fanfic_id; // one to many
 
     @Column(name="read_chapters")
@@ -32,7 +37,11 @@ public class Library
 
     @Enumerated(EnumType.STRING)
     @Column(name="tag")
-    private Tag tag; // make enum
+    private Tag tag;
+
+    @Column(name="custom_tags")
+    @ManyToMany
+    private List<CustomTag> custom_tags;
 
 
 
@@ -99,6 +108,11 @@ public class Library
         this.tag = tag;
     }
 
-
+    public List<CustomTag> getCustom_tags() {
+        return custom_tags;
+    }
+    public void setCustom_tags(List<CustomTag> custom_tags) {
+        this.custom_tags = custom_tags;
+    }
 
 }

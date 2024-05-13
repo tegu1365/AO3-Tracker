@@ -1,6 +1,7 @@
 package model;
 
 import java.util.Date;
+import java.util.List;
 
 
 import jakarta.persistence.*;
@@ -49,7 +50,13 @@ public class Fanfic
     @Column(name="word_count")
     private Integer word_count; // could be a function
 
+    @Column(name="collections")
+    @ManyToMany
+    private List<Collection> collections;
 
+    @Column(name="libraries")
+    @OneToMany(mappedBy="fanfic_id")
+    private List<Library> libraries;
 
 
 
@@ -71,13 +78,13 @@ public class Fanfic
         this.title = title;
     }
 
-    public String getAutor()
+    public String getAuthor()
     {
         return author;
     }
-    public void setAutor(String autor)
+    public void setAuthor(String author)
     {
-        this.author = autor;
+        this.author = author;
     }
 
     public String getUrl()
@@ -159,5 +166,19 @@ public class Fanfic
     public void setWord_count(Integer word_count)
     {
         this.word_count = word_count;
+    }
+
+    public List<Collection> getCollections() {
+        return collections;
+    }
+    public void setCollections(List<Collection> collections) {
+        this.collections = collections;
+    }
+
+    public List<Library> getLibraries() {
+        return libraries;
+    }
+    public void setLibraries(List<Library> libraries) {
+        this.libraries = libraries;
     }
 }
