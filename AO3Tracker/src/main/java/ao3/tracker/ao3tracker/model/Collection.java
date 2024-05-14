@@ -1,10 +1,7 @@
-package model;
-
+package ao3.tracker.ao3tracker.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import org.springframework.data.annotation.Id;
-
 import java.util.List;
 
 @Data
@@ -15,13 +12,12 @@ public class Collection
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Column(name="owner_id")
-    private Integer owner_id;
+    @ManyToOne
+    @JoinColumn(name="ownerId")
+    private User ownerId;
 
-    @Column(name="name")
     private String name;
 
-    @Column(name="description")
     private String description;
 
     @Column(name="fanfics")
@@ -33,6 +29,9 @@ public class Collection
     private List<Fanfic> fanfics;
 
 
+    public Collection(){
+
+    }
     public Integer getId()
     {
         return id;
@@ -42,13 +41,13 @@ public class Collection
         this.id = id;
     }
 
-    public Integer getOwner_id()
+    public User getOwnerId()
     {
-        return owner_id;
+        return ownerId;
     }
-    public void setOwner_id(Integer owner_id)
+    public void setOwnerId(User owner_id)
     {
-        this.owner_id = owner_id;
+        this.ownerId = owner_id;
     }
 
     public String getDescription()
@@ -68,5 +67,4 @@ public class Collection
     {
         this.name = name;
     }
-
 }

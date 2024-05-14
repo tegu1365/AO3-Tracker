@@ -1,18 +1,16 @@
-package model;
+package ao3.tracker.ao3tracker.model;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import lombok.Data;
-import org.springframework.data.annotation.Id;
-
+//
 //@Data
 //@Entity
-//public class Tag1
+//public class Status
 //{
 //    @Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)    private Integer id;
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @ManyToOne
+//    @JoinColumn(name = "status")
+//    private Integer id;
 //    private String name;
 //
 //    public Integer getId()

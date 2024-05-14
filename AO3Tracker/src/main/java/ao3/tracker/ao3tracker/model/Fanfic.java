@@ -1,12 +1,9 @@
-package model;
+package ao3.tracker.ao3tracker.model;
 
 import java.util.Date;
 import java.util.List;
-
-
 import jakarta.persistence.*;
 import lombok.Data;
-import org.springframework.data.annotation.Id;
 
 @Data
 @Entity
@@ -16,50 +13,39 @@ public class Fanfic
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Column(name="title")
     private String title;
 
-    @Column(name="author")
     private String author;
 
-    @Column(name="url")
     private String url;
 
-    @Column(name="fandom")
     private String fandom;
 
-    @Column(name="summary")
     private String summary;
 
-    @Column(name="date_started")
-    private Date date_started;
+    private Date dateStarted;
 
-    @Column(name="data_uploaded")
-    private Date data_uploaded;
+    private Date dataUploaded;
 
-    @Column(name="chapter_currently")
-    private Integer chapter_currently;
+    private Integer chapterCurrently;
 
-    @Column(name="chapter_expected")
-    private String chapter_expected;
+    private String chapterExpected;
 
     @Enumerated(EnumType.STRING)
-    @Column(name="status")
     private Status status; // make enum
 
-    @Column(name="word_count")
-    private Integer word_count; // could be a function
+    private Integer wordCount;
 
     @Column(name="collections")
     @ManyToMany
     private List<Collection> collections;
 
     @Column(name="libraries")
-    @OneToMany(mappedBy="fanfic_id")
+    @OneToMany(mappedBy="fanficId")
     private List<Library> libraries;
 
 
-
+    public Fanfic(){}
     public Integer getId()
     {
         return id;
@@ -114,40 +100,40 @@ public class Fanfic
         this.summary = summary;
     }
 
-    public Date getDate_started()
+    public Date getDateStarted()
     {
-        return date_started;
+        return dateStarted;
     }
-    public void setDate_started(Date date_started)
+    public void setDateStarted(Date date_started)
     {
-        this.date_started = date_started;
-    }
-
-    public Date getData_uploaded()
-    {
-        return data_uploaded;
-    }
-    public void setData_uploaded(Date data_uploaded)
-    {
-        this.data_uploaded = data_uploaded;
+        this.dateStarted = date_started;
     }
 
-    public Integer getChapter_currently()
+    public Date getDataUploaded()
     {
-        return chapter_currently;
+        return dataUploaded;
     }
-    public void setChapter_currently(Integer chapter_currently)
+    public void setDataUploaded(Date data_uploaded)
     {
-        this.chapter_currently = chapter_currently;
+        this.dataUploaded = data_uploaded;
     }
 
-    public String getChapter_expected()
+    public Integer getChapterCurrently()
     {
-        return chapter_expected;
+        return chapterCurrently;
     }
-    public void setChapter_expected(String chapter_expected)
+    public void setChapterCurrently(Integer chapterCurrently)
     {
-        this.chapter_expected = chapter_expected;
+        this.chapterCurrently = chapterCurrently;
+    }
+
+    public String getChapterExpected()
+    {
+        return chapterExpected;
+    }
+    public void setChapterExpected(String chapterExpected)
+    {
+        this.chapterExpected = chapterExpected;
     }
 
     public Status getStatus()
@@ -159,13 +145,13 @@ public class Fanfic
         this.status = status;
     }
 
-    public Integer getWord_count()
+    public Integer getWordCount()
     {
-        return word_count;
+        return wordCount;
     }
-    public void setWord_count(Integer word_count)
+    public void setWordCount(Integer wordCount)
     {
-        this.word_count = word_count;
+        this.wordCount = wordCount;
     }
 
     public List<Collection> getCollections() {

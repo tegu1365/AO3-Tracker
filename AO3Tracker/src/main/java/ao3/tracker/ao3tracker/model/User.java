@@ -1,10 +1,7 @@
-package model;
-
+package ao3.tracker.ao3tracker.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import org.springframework.data.annotation.Id;
-
 import java.util.List;
 
 @Data
@@ -15,21 +12,20 @@ public class User
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Column(name="username")
     private String username;
 
-    @Column(name="email")
     private String email;
 
-    @Column(name="password")
     private String password;
 
-    @Column(name="libraries")
-    @OneToMany(mappedBy="user_id")
+    @OneToMany(mappedBy="userId")
     private List<Library> libraries;
 
+    @OneToMany(mappedBy="ownerId")
+    private List<Collection> collections;
+    public User(){
 
-
+    }
     public Integer getId()
     {
         return id;

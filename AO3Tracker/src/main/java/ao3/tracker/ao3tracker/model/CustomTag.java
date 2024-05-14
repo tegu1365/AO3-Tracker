@@ -1,11 +1,8 @@
-package model;
+package ao3.tracker.ao3tracker.model;
 
 import java.util.List;
-
-
 import jakarta.persistence.*;
 import lombok.Data;
-import org.springframework.data.annotation.Id;
 
 @Data
 @Entity
@@ -15,7 +12,6 @@ public class CustomTag
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Column(name="name")
     private String name;
 
     @Column(name = "libraries")
@@ -26,8 +22,7 @@ public class CustomTag
             inverseJoinColumns = @JoinColumn(name = "customtag_id"))
     private List<Library> libraries;
 
-
-
+    public CustomTag(){}
     public Integer getId()
     {
         return id;

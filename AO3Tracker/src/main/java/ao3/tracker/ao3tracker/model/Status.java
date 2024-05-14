@@ -1,4 +1,4 @@
-package model;
+package ao3.tracker.ao3tracker.model;
 
 public enum Status {
     ongoing("ongoing"),
