@@ -11,27 +11,21 @@ public class Collection
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-
     @ManyToOne
     @JoinColumn(name="ownerId")
-    private User ownerId;
-
+    private Users ownerId;
     private String name;
-
     private String description;
 
-    @Column(name="fanfics")
     @ManyToMany
     @JoinTable(
-            name = "collection_fanfic",
             joinColumns = @JoinColumn(name = "fanfic_id"),
             inverseJoinColumns = @JoinColumn(name = "collection_id"))
     private List<Fanfic> fanfics;
 
+    public Collection(){}
 
-    public Collection(){
 
-    }
     public Integer getId()
     {
         return id;
@@ -41,11 +35,11 @@ public class Collection
         this.id = id;
     }
 
-    public User getOwnerId()
+    public Users getOwnerId()
     {
         return ownerId;
     }
-    public void setOwnerId(User owner_id)
+    public void setOwnerId(Users owner_id)
     {
         this.ownerId = owner_id;
     }

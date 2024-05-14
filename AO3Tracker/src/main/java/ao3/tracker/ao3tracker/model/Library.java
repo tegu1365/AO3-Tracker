@@ -12,30 +12,26 @@ public class Library
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private  Integer id;
-
-   @ManyToOne
-   @JoinColumn(name="userId")
-    private User userId; // one to many
-
+    @ManyToOne
+    @JoinColumn(name="userId")
+    private Users userId; // one to many
     @ManyToOne
     @JoinColumn(name="fanficId")
     private Fanfic fanficId; // one to many
-
     private Integer readChapters;
-
     private Date startedDate;
-
     private Date lastRead;
-
     @Enumerated(EnumType.STRING)
-    @Column(name="tag")
     private Tag tag;
-
-    @Column(name="custom_tags")
     @ManyToMany
+    @JoinTable(
+//            name = "customTag_library",
+            joinColumns = @JoinColumn(name = "customtag_id"),
+            inverseJoinColumns = @JoinColumn(name = "library_id"))
     private List<CustomTag> customTags;
 
     public Library(){}
+
     public Integer getId()
     {
         return id;
@@ -45,11 +41,11 @@ public class Library
         this.id = id;
     }
 
-    public User getUserId()
+    public Users getUserId()
     {
         return userId;
     }
-    public void setUserId(User userId)
+    public void setUserId(Users userId)
     {
         this.userId = userId;
     }

@@ -11,16 +11,10 @@ public class CustomTag
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-
     private String name;
+//    @ManyToMany
+//    private List<Library> libraries;
 
-    @Column(name = "libraries")
-    @ManyToMany
-    @JoinTable(
-            name = "customTag_library",
-            joinColumns = @JoinColumn(name = "library_id"),
-            inverseJoinColumns = @JoinColumn(name = "customtag_id"))
-    private List<Library> libraries;
 
     public CustomTag(){}
     public Integer getId()
@@ -41,10 +35,10 @@ public class CustomTag
         this.name = name;
     }
 
-    public List<Library> getLibraries() {
-        return libraries;
-    }
-    public void setLibraries(List<Library> libraries) {
-        this.libraries = libraries;
-    }
+//    public List<Library> getLibraries() {
+//        return libraries;
+//    }
+//    public void setLibraries(List<Library> libraries) {
+//        this.libraries = libraries;
+//    }
 }

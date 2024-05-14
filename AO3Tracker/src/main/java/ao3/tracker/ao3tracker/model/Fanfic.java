@@ -12,35 +12,20 @@ public class Fanfic
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-
     private String title;
-
     private String author;
-
     private String url;
-
     private String fandom;
-
     private String summary;
-
     private Date dateStarted;
-
     private Date dataUploaded;
-
     private Integer chapterCurrently;
-
     private String chapterExpected;
-
     @Enumerated(EnumType.STRING)
     private Status status; // make enum
-
     private Integer wordCount;
-
-    @Column(name="collections")
-    @ManyToMany
-    private List<Collection> collections;
-
-    @Column(name="libraries")
+//    @ManyToMany
+//    private List<Collection> collections;
     @OneToMany(mappedBy="fanficId")
     private List<Library> libraries;
 
@@ -154,12 +139,12 @@ public class Fanfic
         this.wordCount = wordCount;
     }
 
-    public List<Collection> getCollections() {
-        return collections;
-    }
-    public void setCollections(List<Collection> collections) {
-        this.collections = collections;
-    }
+//    public List<Collection> getCollections() {
+//        return collections;
+//    }
+//    public void setCollections(List<Collection> collections) {
+//        this.collections = collections;
+//    }
 
     public List<Library> getLibraries() {
         return libraries;

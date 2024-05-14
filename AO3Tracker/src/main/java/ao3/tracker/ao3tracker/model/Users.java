@@ -5,27 +5,24 @@ import lombok.Data;
 import java.util.List;
 
 @Data
+@Table
 @Entity
-public class User
+public class Users
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-
     private String username;
-
     private String email;
-
     private String password;
-
     @OneToMany(mappedBy="userId")
     private List<Library> libraries;
-
     @OneToMany(mappedBy="ownerId")
     private List<Collection> collections;
-    public User(){
 
-    }
+    public Users(){ }
+
+
     public Integer getId()
     {
         return id;
