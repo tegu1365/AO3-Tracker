@@ -1,5 +1,7 @@
 package ao3.tracker.ao3tracker.dto;
 
+import ao3.tracker.ao3tracker.model.Fanfic;
+import ao3.tracker.ao3tracker.model.Users;
 import jakarta.persistence.*;
 import lombok.Data;
 
