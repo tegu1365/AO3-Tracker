@@ -3,18 +3,23 @@ package ao3.tracker.ao3tracker.scraper;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+
+import javax.swing.*;
+
 public class Ao3Scrapper {
     //work class
     String Title;
     String Url;
     String Author;
+    String Fandom;
     String Summary;
     //stats
-    String datePublished;
-    String dateLastUpdate;
-    String numberOfChapters;
-    String expectedChapters;
-    String numberOfWords;
+    String dateStarted;
+    String dataUploaded;
+    String chapterCurrently;
+    String chapterExpected;
+    String wordCount;
+
 
     public Ao3Scrapper(String link){
         Url=link.substring(0,link.lastIndexOf('c')-1);
@@ -39,6 +44,15 @@ public class Ao3Scrapper {
         Author=work.selectFirst("h3").addClass("byline heading").text();
     }
 
+    private void setFandom(Document doc){
+        Elements work=doc.getElementsByClass("fandom tags");
+        //Elements tags=doc.select("dd.fandom.tags ul.commas li a.tag");
+        Fandom="";
+        for(Element el:work){
+            Fandom+=el.select("ul.commas li a.tag").text()+",";
+        }
+    }
+
     private void setSummary(Document doc){
         Elements summery=doc.getElementsByClass("summary module");
         Summary="";
@@ -51,12 +65,12 @@ public class Ao3Scrapper {
     private void setStats(Document doc){
         Elements stats=doc.select("dl.stats");
         for (Element element:stats){
-            datePublished= element.select("dd.published").text();
-            dateLastUpdate= element.select("dd.status").text();
+            dateStarted= element.select("dd.published").text();
+            dataUploaded= element.select("dd.status").text();
             String chapters= element.select("dd.chapters").text();
-            numberOfChapters= chapters.substring(0,chapters.lastIndexOf('/'));
-            expectedChapters=chapters.substring(chapters.lastIndexOf('/')+1);
-            numberOfWords=element.select("dd.words").text();
+            chapterCurrently= chapters.substring(0,chapters.lastIndexOf('/'));
+            chapterExpected=chapters.substring(chapters.lastIndexOf('/')+1);
+            wordCount=element.select("dd.words").text();
         }
     }
 
@@ -65,9 +79,9 @@ public class Ao3Scrapper {
         return "{ \"url\":\"" + Url + "\", "
                 + " \"title\": \"" + Title + "\", "
                 + "\"author\":\"" + Author + "\","
-                + "\"published\":\"" + datePublished + "\","
-                + "\"updated\":\"" + dateLastUpdate + "\","
-                + "\"words\":\"" + numberOfWords + "\","
-                + "\"chapters\":\"" + numberOfChapters + "\"}";
+                + "\"published\":\"" + dateStarted + "\","
+                + "\"updated\":\"" + dataUploaded + "\","
+                + "\"words\":\"" + wordCount + "\","
+                + "\"chapters\":\"" + chapterCurrently + "\"}";
     }
 }
