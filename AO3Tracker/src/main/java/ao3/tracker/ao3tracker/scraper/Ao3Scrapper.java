@@ -29,6 +29,7 @@ public class Ao3Scrapper {
         setAuthor(document);
         setSummary(document);
         setStats(document);
+        setFandom(document);
     }
     private Document getDoc(Connector connector){
         return connector.getDocument();
