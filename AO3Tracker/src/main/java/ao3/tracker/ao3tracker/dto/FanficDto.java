@@ -19,7 +19,7 @@ public class FanficDto
     private Date dataUploaded;
     private Integer chapterCurrently;
     private String chapterExpected;
-    private Status status; // make enum
+    private Status status;
     private Integer wordCount;
     private List<LibraryDto> libraries;
 }
