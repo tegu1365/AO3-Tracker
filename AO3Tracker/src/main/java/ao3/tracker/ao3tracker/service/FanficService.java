@@ -4,6 +4,7 @@ import ao3.tracker.ao3tracker.model.Fanfic;
 import ao3.tracker.ao3tracker.model.Users;
 import ao3.tracker.ao3tracker.repository.FanficRepository;
 import ao3.tracker.ao3tracker.repository.UsersRepository;
+import ao3.tracker.ao3tracker.scraper.Ao3Scrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,11 +17,23 @@ public class FanficService {
        this.fanficRepository=fanficRepository;
    }
     public Fanfic createFanfic(Fanfic fanfic) {
-        return fanficRepository.save(fanfic);
+       return fanficRepository.save(fanfic);
+    }
+
+    public  Fanfic createFanficByUrl(String url){
+        Ao3Scrapper scrapper=new Ao3Scrapper(url);
+        if(!scrapper.isNull) {return fanficRepository.save(scrapper.ParseToFanfic());}
+        else{
+            //cannot create
+        }
+        return null;
     }
 
     public Fanfic findById(Integer id) {
         return fanficRepository.findById(id).orElse(null);
+    }
+    public Fanfic findByUrl(String url) {
+        return fanficRepository.findByUrl(url).orElse(null);
     }
 
     public Fanfic updateFanfic(Fanfic fanfic) {

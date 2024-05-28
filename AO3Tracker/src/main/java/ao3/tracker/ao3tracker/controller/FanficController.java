@@ -1,18 +1,29 @@
 package ao3.tracker.ao3tracker.controller;
 
 import ao3.tracker.ao3tracker.dto.FanficDto;
+import ao3.tracker.ao3tracker.mapper.FanficMapper;
+import ao3.tracker.ao3tracker.model.Fanfic;
 import ao3.tracker.ao3tracker.service.FanficService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/fanfic")
 public class FanficController {
     @Autowired
     private FanficService fanficService;
-   //add mapper
+    @Autowired
+    private FanficMapper fanficMapper;
 
-    
+    @GetMapping
+    public ResponseEntity<FanficDto> fetchFanfic(@RequestParam String url){
+        Fanfic fanfic=fanficService.findByUrl(url);
+        if(fanfic==null){
+            return new ResponseEntity<>(fanficMapper.mapToDto(fanficService.createFanficByUrl(url)), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(fanficMapper.mapToDto(fanfic), HttpStatus.OK);
+    }
 
 }

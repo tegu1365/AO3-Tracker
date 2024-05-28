@@ -1,5 +1,6 @@
 package ao3.tracker.ao3tracker.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import jakarta.persistence.*;
@@ -17,8 +18,8 @@ public class Fanfic
     private String url;
     private String fandom;
     private String summary;
-    private Date dateStarted;
-    private Date dataUploaded;
+    private LocalDate dateStarted;
+    private LocalDate dataUploaded;
     private Integer chapterCurrently;
     private String chapterExpected;
     @Enumerated(EnumType.STRING)
@@ -85,20 +86,20 @@ public class Fanfic
         this.summary = summary;
     }
 
-    public Date getDateStarted()
+    public LocalDate getDateStarted()
     {
         return dateStarted;
     }
-    public void setDateStarted(Date date_started)
+    public void setDateStarted(LocalDate date_started)
     {
         this.dateStarted = date_started;
     }
 
-    public Date getDataUploaded()
+    public LocalDate getDataUploaded()
     {
         return dataUploaded;
     }
-    public void setDataUploaded(Date data_uploaded)
+    public void setDataUploaded(LocalDate data_uploaded)
     {
         this.dataUploaded = data_uploaded;
     }

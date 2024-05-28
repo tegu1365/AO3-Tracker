@@ -24,7 +24,7 @@ public class LibraryService {
         return libraryRepository.findById(id).orElse(null);
     }
 
-    public List<Library> getUserLibrary(Integer userId){
+    public List<Library> getUserLibrary(Users userId){
         return  libraryRepository.findByUserId(userId);
     }
 
