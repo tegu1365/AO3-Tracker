@@ -1,14 +1,15 @@
 package ao3.tracker.ao3tracker.mapper;
 
-import ao3.tracker.ao3tracker.dto.FanficDto;
-import ao3.tracker.ao3tracker.model.Fanfic;
+import ao3.tracker.ao3tracker.dto.UsersDto;
+import ao3.tracker.ao3tracker.model.Users;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+
 @Mapper(componentModel = "spring")
-public interface FanficMapper {
+public interface UsersMapper {
     @Mapping(source = "id", target = "id")
-    Fanfic mapFromDto(FanficDto fanficDto);
+    Users mapFromDto(UsersDto fanficDto);
     @Mapping(source = "id", target = "id")
-    FanficDto mapToDto(Fanfic fanfic);
+    UsersDto mapToDto(Users fanfic);
 }
