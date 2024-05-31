@@ -19,8 +19,8 @@ public class CollectionController {
     @Autowired
     private CollectionMapper collectionMapper;
 
-   // @GetMapping("/fanfic_id={fanficId}")
-   // public ResponseEntity<CollectionDto> fetchCollections(@RequestParam Integer fanficId){
+   //@GetMapping("/fanfic_id={fanficId}")
+   //public ResponseEntity<CollectionDto> fetchCollections(@RequestParam Integer fanficId){
 
     //}
     @GetMapping("/{id}")
