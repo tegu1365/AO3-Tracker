@@ -23,14 +23,21 @@ public class FanficService {
     public  Fanfic createFanficByUrl(String url){
         Ao3Scrapper scrapper=new Ao3Scrapper(url);
         if(!scrapper.isNull) {return fanficRepository.save(scrapper.ParseToFanfic());}
-        else{
-            //cannot create
-        }
+        //else{
+            //cannot create message
+        //}
         return null;
     }
 
     public Fanfic findById(Integer id) {
-        return fanficRepository.findById(id).orElse(null);
+        Fanfic fanfic= fanficRepository.findById(id).orElse(null);
+        if(fanfic!=null){
+            Ao3Scrapper scrapper=new Ao3Scrapper(fanfic.getUrl());
+            if(!scrapper.isNull) {
+                updateFanfic(scrapper.ParseToFanfic());
+            }
+        }
+        return fanfic;
     }
     public Fanfic findByUrl(String url) {
         return fanficRepository.findByUrl(url).orElse(null);

@@ -24,7 +24,11 @@ public class Ao3Scrapper {
     String wordCount;
     public Boolean isNull=false;
     public Ao3Scrapper(String link) {
-        Url = link.substring(0, link.lastIndexOf('c') - 1);
+        if(link.lastIndexOf('c')!=-1) {
+            Url = link.substring(0, link.lastIndexOf('c') - 1);
+        }else{
+            Url=link;
+        }
         Connector connector = new Connector(Url);
         Document document = getDoc(connector);
         if(validateDoc(document)) {
@@ -39,11 +43,11 @@ public class Ao3Scrapper {
     }
 
     private boolean validateDoc(Document doc){
-        Element singIn=doc.getElementById("signin").firstElementChild();
-        if(singIn!=null){
-            return false;
+        if(doc!=null) {
+            Elements singIn = doc.select("signin");
+            return singIn.isEmpty();
         }
-        return true;
+        return false;
     }
     private Document getDoc(Connector connector) {
         return connector.getDocument();
@@ -64,7 +68,7 @@ public class Ao3Scrapper {
         //Elements tags=doc.select("dd.fandom.tags ul.commas li a.tag");
         Fandom = "";
         for (Element el : work) {
-            Fandom += el.select("ul.commas li a.tag").text() + ",";
+            Fandom += el.select("ul.commas li a.tag").text() + " ,";
         }
     }
 
@@ -101,32 +105,35 @@ public class Ao3Scrapper {
     }
 
     public Fanfic ParseToFanfic() {
-        Fanfic fanfic = new Fanfic();
-        fanfic.setUrl(Url);
-        fanfic.setTitle(Title);
-        fanfic.setAuthor(Author);
-        fanfic.setFandom(Fandom);
-       // fanfic.setSummary(Summary);
-        fanfic.setChapterCurrently(Integer.valueOf(chapterCurrently));
-        fanfic.setChapterExpected(chapterExpected);
-        fanfic.setDateStarted(LocalDate.parse(dateStarted));
-        fanfic.setDataUploaded(LocalDate.parse(dataUploaded));
-        fanfic.setWordCount(Integer.valueOf(wordCount.replace(",",""))); //need to have the format right ao3 writes int with commas
-        //set status
-        if (!chapterExpected.equals("?")) {
-            if (Integer.valueOf(chapterCurrently).equals(Integer.valueOf(chapterExpected))) {
-                fanfic.setStatus(Status.complete);
+        if(!isNull) {
+            Fanfic fanfic = new Fanfic();
+            fanfic.setUrl(Url);
+            fanfic.setTitle(Title);
+            fanfic.setAuthor(Author);
+            fanfic.setFandom(Fandom);
+            // fanfic.setSummary(Summary);
+            fanfic.setChapterCurrently(Integer.valueOf(chapterCurrently));
+            fanfic.setChapterExpected(chapterExpected);
+            fanfic.setDateStarted(LocalDate.parse(dateStarted));
+            fanfic.setDataUploaded(LocalDate.parse(dataUploaded));
+            fanfic.setWordCount(Integer.valueOf(wordCount.replace(",", ""))); //need to have the format right ao3 writes int with commas
+            //set status
+            if (!chapterExpected.equals("?")) {
+                if (Integer.valueOf(chapterCurrently).equals(Integer.valueOf(chapterExpected))) {
+                    fanfic.setStatus(Status.complete);
 
+                } else {
+                    fanfic.setStatus(Status.ongoing);
+                }
             } else {
-                fanfic.setStatus(Status.ongoing);
+                if (Title.toUpperCase().contains("HIATUS")) {
+                    fanfic.setStatus(Status.onHold);
+                } else {
+                    fanfic.setStatus(Status.ongoing);
+                }
             }
-        } else {
-            if (Title.toUpperCase().contains("HIATUS")) {
-                fanfic.setStatus(Status.onHold);
-            } else {
-                fanfic.setStatus(Status.ongoing);
-            }
+            return fanfic;
         }
-        return fanfic;
+        return null;
     }
 }

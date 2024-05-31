@@ -17,12 +17,18 @@ public class FanficController {
     @Autowired
     private FanficMapper fanficMapper;
 
-    @GetMapping
+    @PostMapping
     public ResponseEntity<FanficDto> fetchFanfic(@RequestParam String url){
         Fanfic fanfic=fanficService.findByUrl(url);
         if(fanfic==null){
             return new ResponseEntity<>(fanficMapper.mapToDto(fanficService.createFanficByUrl(url)), HttpStatus.OK);
         }
+        return new ResponseEntity<>(fanficMapper.mapToDto(fanfic), HttpStatus.OK);
+    }
+
+    @PostMapping("/id={id}")
+    public ResponseEntity<FanficDto> fetchFanfic(@PathVariable Integer id){
+        Fanfic fanfic=fanficService.findById(id);
         return new ResponseEntity<>(fanficMapper.mapToDto(fanfic), HttpStatus.OK);
     }
 
