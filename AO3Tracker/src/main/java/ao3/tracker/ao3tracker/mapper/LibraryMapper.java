@@ -5,11 +5,13 @@ import ao3.tracker.ao3tracker.model.Library;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+import java.util.List;
+
 
 @Mapper(componentModel = "spring")
 public interface LibraryMapper {
     @Mapping(source = "id", target = "id")
-    Library mapFromDto(LibraryDto fanficDto);
+    Library mapFromDto(LibraryDto libraryDto);
     @Mapping(source = "id", target = "id")
-    LibraryDto mapToDto(Library fanfic);
+    LibraryDto mapToDto(Library library);
 }

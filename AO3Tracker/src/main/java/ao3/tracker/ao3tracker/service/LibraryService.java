@@ -11,10 +11,12 @@ import java.util.List;
 @Service
 public class LibraryService {
     private final LibraryRepository libraryRepository;
+    private final UserService userService;
 
     @Autowired
-    public LibraryService(LibraryRepository libraryRepository){
+    public LibraryService(LibraryRepository libraryRepository, UserService userService){
         this.libraryRepository=libraryRepository;
+        this.userService = userService;
     }
     public Library createLibrary(Library library) {
         return libraryRepository.save(library);
@@ -24,8 +26,9 @@ public class LibraryService {
         return libraryRepository.findById(id).orElse(null);
     }
 
-    public List<Library> getUserLibrary(Users userId){
-        return  libraryRepository.findByUserId(userId);
+    public List<Library> getUserLibrary(Integer userId){
+        Users user = userService.findById(userId);
+        return  libraryRepository.findByUserId(user);
     }
 
     public Library updateLibrary(Library library) {

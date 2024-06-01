@@ -3,6 +3,7 @@ package ao3.tracker.ao3tracker.dto;
 import ao3.tracker.ao3tracker.model.Status;
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
