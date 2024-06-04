@@ -22,5 +22,5 @@ public class FanficDto
     private String chapterExpected;
     private Status status;
     private Integer wordCount;
-    private List<LibraryDto> libraries;
+ //   private List<LibraryDto> libraries;
 }

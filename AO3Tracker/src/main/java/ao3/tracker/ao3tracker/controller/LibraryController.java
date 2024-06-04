@@ -2,7 +2,9 @@ package ao3.tracker.ao3tracker.controller;
 
 import ao3.tracker.ao3tracker.dto.LibraryDto;
 import ao3.tracker.ao3tracker.dto.UsersDto;
+import ao3.tracker.ao3tracker.dto.UsersLibraryDto;
 import ao3.tracker.ao3tracker.mapper.LibraryMapper;
+import ao3.tracker.ao3tracker.mapper.UsersLibraryMapper;
 import ao3.tracker.ao3tracker.model.Library;
 import ao3.tracker.ao3tracker.model.Users;
 import ao3.tracker.ao3tracker.service.LibraryService;
@@ -21,16 +23,19 @@ public class LibraryController {
     private LibraryService libraryService;
     @Autowired
     private LibraryMapper libraryMapper;
+    @Autowired
+    private UsersLibraryMapper usersLibraryMapper;
 
-  /*  @GetMapping
-    public ResponseEntity<List<LibraryDto>> fetchUsersLibrary(@RequestParam Integer userId){
+    @GetMapping
+    public ResponseEntity<List<UsersLibraryDto>> fetchUsersLibrary(@RequestParam Integer userId){
         List<Library> libraries=libraryService.getUserLibrary(userId);
-        List<LibraryDto> result=libraries
+        List<UsersLibraryDto> result=libraries
                 .stream()
-                .map(library -> libraryMapper.mapToDto(library))
+                .map(library -> usersLibraryMapper.mapToDto(library))
                 .collect(Collectors.toList());
         return new ResponseEntity<>(result, HttpStatus.OK);
-    }*/
+    }
+
 
     @PostMapping("/add")
     public ResponseEntity<LibraryDto> addFanficToLibrary(@RequestBody LibraryDto libraryDto) {
