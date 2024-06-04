@@ -13,6 +13,6 @@ public class UsersDto
     private String username;
     private String email;
     private String password;
-    private List<Library> libraries;
-    private List<Collection> collections;
+   // private List<Library> libraries;
+   // private List<Collection> collections;
 }

@@ -2,13 +2,11 @@ package ao3.tracker.ao3tracker.controller;
 
 import ao3.tracker.ao3tracker.dto.LibraryDto;
 import ao3.tracker.ao3tracker.dto.LibraryUpdateDto;
-import ao3.tracker.ao3tracker.dto.UsersDto;
 import ao3.tracker.ao3tracker.dto.UsersLibraryDto;
 import ao3.tracker.ao3tracker.mapper.LibraryMapper;
 import ao3.tracker.ao3tracker.mapper.LibraryUpdateMapper;
 import ao3.tracker.ao3tracker.mapper.UsersLibraryMapper;
 import ao3.tracker.ao3tracker.model.Library;
-import ao3.tracker.ao3tracker.model.Users;
 import ao3.tracker.ao3tracker.service.LibraryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

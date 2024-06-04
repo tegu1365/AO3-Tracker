@@ -11,8 +11,8 @@ import java.util.List;
 public class CollectionDto
 {
     private Integer id;
-    private Users ownerId;
+    private UsersDto ownerId;
     private String name;
     private String description;
-    private List<Fanfic> fanfics;
+    private List<FanficDto> fanfics;
 }
