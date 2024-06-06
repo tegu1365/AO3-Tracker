@@ -17,6 +17,7 @@ public class Fanfic
     private String author;
     private String url;
     private String fandom;
+    @Column(columnDefinition="TEXT")
     private String summary;
     private LocalDate dateStarted;
     private LocalDate dataUploaded;
