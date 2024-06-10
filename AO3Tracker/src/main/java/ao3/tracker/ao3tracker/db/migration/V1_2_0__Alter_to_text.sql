@@ -1,0 +1,1 @@
+ALTER TABLE fanfic ALTER COLUMN summary TYPE text;
