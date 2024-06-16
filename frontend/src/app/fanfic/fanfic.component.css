@@ -1,0 +1,68 @@
+.fanfic-card{
+  background: antiquewhite;
+  display: flex;
+  width: 30%;
+}
+mat-card-header{
+  display: flex;
+  flex-direction: column;
+}
+
+mat-card-title{
+  font-size: larger;
+  color: brown;
+}
+mat-card-subtitle{
+  color: black;
+  font-size: medium;
+}
+.fandom-name{
+  font-size: small;
+}
+.summary{
+  font-size: small;
+}
+.info{
+  font-size: small;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.library-tag{
+  width: 25%;
+  margin: 1%;
+  font-size: medium;
+  color: indianred !important;
+  border: 1px solid brown;
+  border-radius: 3px;
+}
+.library-tag option:hover {
+  background-color: salmon;
+  color: #000;
+}
+.library-tag option{
+  color: indianred;
+}
+
+mat-card-actions{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.library-info{
+  font-size: small;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+mat-card-actions{
+  flex-direction: row-reverse;
+  display: flex;
+  align-content: flex-end;
+  gap: 1%;
+}
+[hidden] {
+  display: none !important;
+}

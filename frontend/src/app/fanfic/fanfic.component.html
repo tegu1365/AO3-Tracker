@@ -1,0 +1,32 @@
+<mat-card class="fanfic-card">
+  <mat-card-header>
+    <mat-card-title>Fanfic Name</mat-card-title>
+    <mat-card-subtitle>Author</mat-card-subtitle>
+    <p class="fandom-name">Fandom</p>
+  </mat-card-header>
+  <mat-card-content>
+    <p>Summary</p>
+    <p class="summary">summary text</p>
+    <mat-divider></mat-divider>
+    <div class="info">
+      <p>Date Started:</p>
+      <p>Last Update:</p>
+      <p>Current Chapters:</p>
+      <p>Word Count:</p>
+      <p>Status:</p>
+    </div>
+    <div class="library-info" [hidden] = "!isShow">
+      <p>Library Tag</p>
+      <p>Started Reading: </p>
+      <p>Last Read: </p>
+      <p>Chapter: </p>
+      <p>Tags: ...</p>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-flat-button>Edit</button>
+    <button mat-flat-button (click) = toggleDisplay()>Show info</button>
+  </mat-card-actions>
+  <mat-card-footer>
+  </mat-card-footer>
+</mat-card>
