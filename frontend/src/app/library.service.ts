@@ -8,5 +8,10 @@ import { Library } from "./library";
 })
 export class LibraryService {
 
-  constructor() { }
+  constructor() {
+    GetLibrary
+    AddFanficToLibrary
+    AddFanficToCollection
+    UpdateLibraryData
+    }
 }

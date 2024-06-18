@@ -8,5 +8,9 @@ import { Users } from "./user";
 })
 export class UsersService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    GetUser
+    Login
+    Registration
+    }
 }

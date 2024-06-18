@@ -8,5 +8,10 @@ import {Fanfic} from "./fanfic";
 })
 export class FanficService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    GetFanfic
+    GetFanficById
+    GetAllCollectionOfFic
+    AddCustumTag
+    }
 }
