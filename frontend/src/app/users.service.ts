@@ -9,7 +9,9 @@ import { Users } from "./user";
 export class UsersService {
 
   constructor(private http: HttpClient) {
-    GetUser
+    public GetUser(id: number): Observable<User> {
+      return this.http.get<User>('/api/user', id);
+    }
     Login
     Registration
     }
