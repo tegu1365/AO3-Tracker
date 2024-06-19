@@ -20,11 +20,13 @@
       <p>Started Reading: </p>
       <p>Last Read: </p>
       <p>Chapter: </p>
-      <p>Tags: ...</p>
+      <mat-chip-set aria-label="0">
+        <mat-chip>...</mat-chip>
+      </mat-chip-set>
     </div>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-flat-button>Edit</button>
+    <button mat-flat-button (click)="openDialog()">Edit</button>
     <button mat-flat-button (click) = toggleDisplay()>Show info</button>
   </mat-card-actions>
   <mat-card-footer>

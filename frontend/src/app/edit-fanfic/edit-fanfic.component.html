@@ -1,0 +1,43 @@
+<h3 mat-dialog-title>{{data.title}}</h3>
+<mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Chapters</mat-label>
+    <input matInput type="number" [(ngModel)]="value">
+    @if (value) {
+      <button matSuffix mat-icon-button aria-label="Clear" (click)="value=0">
+        <mat-icon>close</mat-icon>
+      </button>
+    }
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Library Tag</mat-label>
+    <mat-select [(ngModel)]="selectedValue" name="tag">
+      @for (tag of libraryTags; track tag) {
+        <mat-option [value]="tag.value">{{tag.viewValue}}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Started Date</mat-label>
+    <input matInput [matDatepicker]="picker">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Last Read</mat-label>
+    <input matInput [matDatepicker]="picker">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Tags</mat-label>
+    <textarea matInput placeholder="tag1, tag2, tag3..."></textarea>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="result()" cdkFocusInitial>Ok</button>
+</mat-dialog-actions>
