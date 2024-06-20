@@ -8,15 +8,17 @@ import { Fanfic } from "./fanfic";
 })
 export class FanficService {
 
-  constructor(private http: HttpClient) {
-    public GetFanfic(): Observable<Fanfic> {
-      return this.http.get<Fanfic>('/api/fanfic');
-    }
-    public GetFanficById(id: number): Observable<Fanfic> {
-      return this.http.get<Fanfic>('/api/fanfic', id);
-    }
-    GetAllCollectionOfFic
-    AddCustumTag
+  constructor(private http: HttpClient) {  }
+
+  public GetFanfic(): Observable<Fanfic> {
+    return this.http.get<Fanfic>('/api/fanfic');
   }
+
+  public GetFanficById(id: number): Observable<Fanfic> {
+    return this.http.get<Fanfic>('/api/fanfic', id);
+  }
+
+  GetAllCollectionOfFic
+  AddCustumTag
 }
 

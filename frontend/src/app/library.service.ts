@@ -8,14 +8,14 @@ import { Library } from "./library";
 })
 export class LibraryService {
 
-  constructor() {
-    public GetLibrary(): Observable<Library> {
-      return this.http.get<Library>('/api/library');
-    }
-    public AddFanficToLibrary(fanfic: any): Observable<Library> {
-      return this.http.post('/api/library', fanfic);
-    }
+  constructor(private http: HttpClient) {}
 
-    UpdateLibraryData
-    }
+  public GetLibrary(): Observable<Library> {
+    return this.http.get<Library>('/api/library');
+  }
+  public AddFanficToLibrary(fanfic: any): Observable<Library> {
+    return this.http.post('/api/library', fanfic);
+  }
+
+  UpdateLibraryData
 }
