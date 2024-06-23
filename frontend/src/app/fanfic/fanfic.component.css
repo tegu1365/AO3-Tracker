@@ -1,7 +1,6 @@
 .fanfic-card{
   background: antiquewhite;
   display: flex;
-  width: 30%;
 }
 mat-card-header{
   display: flex;
