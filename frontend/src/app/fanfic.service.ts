@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { Fanfic } from "./fanfic";
+import { CustomTag  } from "./customtag";
 
 @Injectable({
   providedIn: 'root'
