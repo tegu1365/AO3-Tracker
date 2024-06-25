@@ -1,9 +1,9 @@
-import { Users } from "./user";
-import { Fanfic } from "./fanfic";
+import {User} from "./users";
+import {Fanfic} from "./fanfic";
 
-export interface Fanfic {
+export interface Collection {
     id: number;
-    ownerId?: Users;
+    ownerId?: User;
     name?: string;
     description?: string;
     fanfics?: Fanfic[];

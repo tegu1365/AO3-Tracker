@@ -10,12 +10,12 @@ export class LibraryService {
 
   constructor(private http: HttpClient) {}
 
-  public GetLibrary(): Observable<Library> {
-    return this.http.get<Library>('/api/library');
+  public GetLibrary(userId:number): Observable<Library> {
+    return this.http.get<Library>('/api/library?userId='+userId);
   }
-  public AddFanficToLibrary(fanfic: any): Observable<Library> {
-    return this.http.post('/api/library', fanfic);
+  public FanficToLibrary(fanfic: any): Observable<any> {
+    return this.http.put('/api/library', fanfic);
   }
 
-  UpdateLibraryData
+ // UpdateLibraryData
 }

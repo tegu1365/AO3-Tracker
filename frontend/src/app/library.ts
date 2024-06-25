@@ -1,13 +1,14 @@
-import { Users } from "./user";
+import { User } from "./users";
 import { Fanfic } from "./fanfic";
+import {LibraryTag} from "./library-tag";
 
 export interface Library {
     id: number;
-    Users: Users;
+    Users: User;
     fanficId: Fanfic;
     readChapters?: number;
-    startedDate?: date;
-    lastRead?: date;
-    Tag tag; // again i dont know
-//     List<CustomTag> customTags; same for this one
+    startedDate?: Date;
+    lastRead?: Date;
+    tag:LibraryTag; // again i dont know// enum
+    custumTags:string[];
 }

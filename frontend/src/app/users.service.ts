@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpEvent} from "@angular/common/http";
 import {Observable} from "rxjs";
-import { Users } from "./user";
+import { User } from "./users";
 
 @Injectable({
   providedIn: 'root'
@@ -11,14 +11,14 @@ export class UsersService {
   constructor(private http: HttpClient) { }
 
   public GetUser(id: number): Observable<User> {
-    return this.http.get<User>('/api/user', id);
+    return this.http.get<User>('/api/user/'+id);
   }
 
-  public Login(email: string, password: string): Observable<User> {
-    return this.http.get<User>('/api/user', { email, password });
+  public Login(loginInfo: any): Observable<User> {
+    return this.http.post<User>('/api/user/login', loginInfo);
   }
 
-  public Registration(email: string, username: string, password: string,): Observable<Library> {
-    return this.http.post('/api/user', { email, username, password });
+  public Registration(registrationInfo: any): Observable<any> {
+    return this.http.post('/api/user', registrationInfo);
   }
 }

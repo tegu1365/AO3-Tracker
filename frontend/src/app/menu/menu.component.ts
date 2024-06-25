@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {RouterLink, Routes} from "@angular/router";
 import {LibraryComponent} from "../library/library.component";
 import {CollectionInfoComponent} from "../collection-info/collection-info.component";
@@ -21,4 +21,9 @@ import {MatToolbar} from "@angular/material/toolbar";
 })
 export class MenuComponent {
 
+  Logout(){
+    localStorage.removeItem("userId");
+  }
+
+  protected readonly localStorage = localStorage;
 }

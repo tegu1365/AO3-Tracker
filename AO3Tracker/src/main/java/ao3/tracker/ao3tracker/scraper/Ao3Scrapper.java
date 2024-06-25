@@ -111,7 +111,7 @@ public class Ao3Scrapper {
             fanfic.setTitle(Title);
             fanfic.setAuthor(Author);
             fanfic.setFandom(Fandom);
-            // fanfic.setSummary(Summary);
+            fanfic.setSummary(Summary);
             fanfic.setChapterCurrently(Integer.valueOf(chapterCurrently));
             fanfic.setChapterExpected(chapterExpected);
             fanfic.setDateStarted(LocalDate.parse(dateStarted));

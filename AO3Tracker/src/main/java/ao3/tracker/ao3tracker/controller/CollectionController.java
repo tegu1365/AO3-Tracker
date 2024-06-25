@@ -1,6 +1,7 @@
 package ao3.tracker.ao3tracker.controller;
 
 import ao3.tracker.ao3tracker.dto.*;
+import ao3.tracker.ao3tracker.mapper.AllCollectionMapper;
 import ao3.tracker.ao3tracker.mapper.CollectionByFanficIdMapper;
 import ao3.tracker.ao3tracker.mapper.CollectionMapper;
 import ao3.tracker.ao3tracker.service.CollectionService;
@@ -13,7 +14,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/collection")
+@RequestMapping("/api/collection")
 public class CollectionController {
     @Autowired
     private CollectionService collectionService;
@@ -21,6 +22,8 @@ public class CollectionController {
     private CollectionMapper collectionMapper;
     @Autowired
     private CollectionByFanficIdMapper collectionByFanficIdMapper;
+    @Autowired
+    private AllCollectionMapper allCollectionMapper;
 
     @GetMapping("/fanfic_id={fanficId}")
     public ResponseEntity<List<CollectionByFanficIdDto>> fetchCollections(@PathVariable Integer fanficId){
@@ -49,6 +52,21 @@ public class CollectionController {
     public  ResponseEntity<CollectionDto> addFanficToCollection(@RequestBody AddFanficToCollectionDto addDto){
         return  new ResponseEntity<>(collectionMapper.mapToDto(collectionService.addFanfic(
                 addDto.getFanficId(),addDto.getCollectionId())),HttpStatus.OK);
-
     }
+
+    @GetMapping()
+    public ResponseEntity<List<AllCollectionDto>> fetchCollectionsByOwner(@PathVariable Integer userId){
+        List<Collection> collections = collectionService.getCollectionByOwner(userId);
+        if(collections!=null){
+            AllCollectionDto AllCollectionMapper = null;
+            List<AllCollectionDto> result=collections
+                    .stream()
+                    .map(collection -> allCollectionMapper.mapToDto(collection))
+                    .collect(Collectors.toList());
+            return new ResponseEntity<>(result,HttpStatus.OK);
+        }
+        return null;
+    }
+
+
 }

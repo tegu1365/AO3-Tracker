@@ -1,7 +1,7 @@
 package ao3.tracker.ao3tracker.model;
 
 public enum Tag {
-    plan("Plan to read"),
+    plan("Plan To Read"),
     reading("Reading"),
     read("Read"),
     drop("Dropped"),

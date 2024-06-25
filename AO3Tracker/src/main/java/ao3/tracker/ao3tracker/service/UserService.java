@@ -30,6 +30,7 @@ public class UserService {
 
     public Users checkUser(String username,String password){
         Users users=findByName(username);
+
         if( users.getUsername().equals(username)&&users.getPassword().equals(password)){
             return users;
         }

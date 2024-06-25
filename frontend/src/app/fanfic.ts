@@ -1,14 +1,14 @@
 export interface Fanfic {
-    id?: number:
+    id?: number;
     title?: string;
     author?: string;
     url?: string;
     fandom?: string;
     summary?: string;
-    dateStarted?: date
-    dataUploaded?: date;
+    dateStarted?: Date;
+    dataUploaded?: Date;
     chapterCurrently?: number;
     chapterExpected?: string;
-    status?: ???; //not sure how here
+    status?: string; //or create enum
     wordCount?: number;
 }

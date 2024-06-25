@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/library")
+@RequestMapping("/api/library")
 public class LibraryController {
     @Autowired
     private LibraryService libraryService;
@@ -39,7 +39,7 @@ public class LibraryController {
     }
 
 
-    @PostMapping("/add")
+    @PutMapping("/add")
     public ResponseEntity<LibraryDto> addFanficToLibrary(@RequestBody LibraryDto libraryDto) {
         Library library=libraryMapper.mapFromDto(libraryDto);
         return new ResponseEntity<>(libraryMapper.mapToDto(libraryService.createLibrary(library)),HttpStatus.CREATED);

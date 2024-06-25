@@ -2,8 +2,11 @@
   <span>AO3 Tracker</span>
   <div class="spacer"></div>
   <a mat-flat-button routerLink="/home">Home</a>
-  <!--if(user)-->
-  <a mat-flat-button routerLink="/library">Library</a>
-  <a mat-flat-button routerLink="/collections">Collections</a>
-  <!-- login/logout-->
+  @if (localStorage.getItem("userId")) {
+    <a mat-flat-button routerLink="/library">Library</a>
+    <a mat-flat-button routerLink="/collections">Collections</a>
+    <a mat-flat-button (click)="Logout()">Logout</a>
+  } @else {
+    <a mat-flat-button routerLink="/login">Login</a>
+  }
 </mat-toolbar>

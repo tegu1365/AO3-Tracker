@@ -15,11 +15,11 @@ export class FanficService {
     return this.http.get<Fanfic>('/api/fanfic');
   }
 
-  public GetFanficById(id: number): Observable<Fanfic> {
-    return this.http.get<Fanfic>('/api/fanfic', id);
+  public GetFanficById(id: number): Observable<any> {
+    return this.http.get<Fanfic>('/api/fanfic/id='+id);
   }
 
-  GetAllCollectionOfFic
-  AddCustumTag
+ // GetAllCollectionOfFic
+ // AddCustumTag
 }
 
