@@ -1,0 +1,19 @@
+<div class="root">
+<div class="search">
+<form>
+  <mat-form-field class="example-full-width">
+    <input matInput #link maxlength="256" placeholder="https://archiveofourown.org/works/.../chapters/...">
+    <mat-hint align="start"><strong>Paste link from AO3</strong> </mat-hint>
+    <mat-hint align="end">{{link.value.length}} / 256</mat-hint>
+  </mat-form-field>
+</form>
+<button mat-flat-button>Search</button>
+</div>
+<!-- if searched-->
+<div>
+  <app-fanfic></app-fanfic>
+</div>
+
+<p class="warning">The fanfic cannot be reached. Hint: See if the fanfic is only for logged in AO3 users.
+  Our app does not support login in AO3.</p>
+</div>

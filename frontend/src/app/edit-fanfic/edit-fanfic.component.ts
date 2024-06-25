@@ -8,7 +8,7 @@ import {
 } from "@angular/material/dialog";
 import {MatFormField, MatFormFieldModule, MatLabel} from "@angular/material/form-field";
 import {MatButton, MatButtonModule} from "@angular/material/button";
-import {FormsModule} from "@angular/forms";
+import {FormControl, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {
   MatDatepicker,
@@ -51,6 +51,7 @@ export interface DialogData {//change to fanfic
     MatIcon,
     MatDatepickerModule,
     MatNativeDateModule,
+    ReactiveFormsModule,
   ],
   templateUrl: './edit-fanfic.component.html',
   styleUrl: './edit-fanfic.component.css'
@@ -70,6 +71,8 @@ export class EditFanficComponent {
     {value: 'OnHold', viewValue: 'On Hold'},
     {value: 'Dropped', viewValue: 'Dropped'},
   ];
+  collections = new FormControl('');
+  userCollection: string[] = ['a', 'b', 'c', 'd', 'e', 'g'];
   onNoClick(): void {
     this.dialogRef.close();
   }

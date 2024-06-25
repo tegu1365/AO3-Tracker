@@ -7,17 +7,19 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {provideNativeDateAdapter} from '@angular/material/core';
+import {MatOption, provideNativeDateAdapter} from '@angular/material/core';
 import {MatChip, MatChipSet} from "@angular/material/chips";
 import {MatDialog} from "@angular/material/dialog";
 import {EditFanficComponent} from "../edit-fanfic/edit-fanfic.component";
+import {MatSelect} from "@angular/material/select";
+import {FormControl, ReactiveFormsModule} from "@angular/forms";
 
 
 @Component({
   selector: 'app-fanfic',
   standalone: true,
   providers: [provideNativeDateAdapter()],
-  imports: [MatCardModule, MatDividerModule, MatFormField, MatButton, MatFormFieldModule, MatInputModule, MatDatepickerModule, MatButtonModule, MatChipSet, MatChip],
+  imports: [MatCardModule, MatDividerModule, MatFormField, MatButton, MatFormFieldModule, MatInputModule, MatDatepickerModule, MatButtonModule, MatChipSet, MatChip, MatSelect, MatOption, ReactiveFormsModule],
   templateUrl: './fanfic.component.html',
   styleUrl: './fanfic.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -26,6 +28,7 @@ export class FanficComponent {
   isShow=false;
   readonly dialog = inject(MatDialog);
   result=signal('')
+
   toggleDisplay() {
     this.isShow = !this.isShow;
   }
@@ -41,4 +44,5 @@ export class FanficComponent {
       }
     });
   }
+
 }
