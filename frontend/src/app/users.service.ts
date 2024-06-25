@@ -19,6 +19,6 @@ export class UsersService {
   }
 
   public Registration(registrationInfo: any): Observable<any> {
-    return this.http.post('/api/user', registrationInfo);
+    return this.http.post('/api/user/create', registrationInfo);
   }
 }

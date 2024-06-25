@@ -11,8 +11,8 @@ export class FanficService {
 
   constructor(private http: HttpClient) {  }
 
-  public GetFanfic(): Observable<Fanfic> {
-    return this.http.get<Fanfic>('/api/fanfic');
+  public GetFanfic(url: string): Observable<Fanfic> {
+    return this.http.get<Fanfic>('/api/fanfic?url='+url);
   }
 
   public GetFanficById(id: number): Observable<any> {

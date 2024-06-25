@@ -14,7 +14,7 @@ export class LibraryService {
     return this.http.get<Library>('/api/library?userId='+userId);
   }
   public FanficToLibrary(fanfic: any): Observable<any> {
-    return this.http.put('/api/library', fanfic);
+    return this.http.put('/api/library/add', fanfic);
   }
 
  // UpdateLibraryData

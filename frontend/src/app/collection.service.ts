@@ -11,18 +11,17 @@ import {Observable} from "rxjs";
 export class CollectionService {
 
   constructor(private http: HttpClient) {}
-/*
   public CreateCollection(ownerId: User, name: string, description: string, fanfics: Fanfic[]): Observable<Collection> {
-    return this.http.post('/api/collection', {description, fanfics, name, ownerId});
+    return this.http.post('/api/collection/add', {description, fanfics, name, ownerId});
   }
 
-  public GetCollection(name: string, id: number): Observable<Collection> {
-    return this.http.get<Collection>('/api/collection', { name, id });
+  public GetCollection(id: number): Observable<Collection> {
+    return this.http.get<Collection>('/api/collection/'+id });
   }
 
-  public AddFanficToCollection(name: string, id: number, fanfic: Fanfic): Observable<Collection> {
-    return this.http.post('/api/collection', { name, id, fanfic });
+  public AddFanficToCollection(fanficId: number, collectionId: number): Observable<Collection> {
+    return this.http.post('/api/fanfic/collection/add', { fanficId, collectionId });
   }
-*/
+
   //get all collections of user
 }
