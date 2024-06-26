@@ -3,6 +3,7 @@ import {HomeComponent} from "./home/home.component";
 import {LibraryComponent} from "./library/library.component";
 import {CollectionsComponent} from "./collections/collections.component";
 import {LoginComponent} from "./login/login.component";
+import {CreateCollectionComponent} from "./create-collection/create-collection.component";
 
 
 export const routes: Routes = [
@@ -10,5 +11,6 @@ export const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'library', component: LibraryComponent },
   { path: 'collections', component: CollectionsComponent },
-  { path: 'login', component: LoginComponent}
+  { path: 'login', component: LoginComponent},
+  { path: 'new_collection', component: CreateCollectionComponent}
 ];

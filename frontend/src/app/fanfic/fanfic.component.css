@@ -26,6 +26,7 @@ mat-card-subtitle{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  gap: 2%;
 }
 .library-tag{
   width: 25%;

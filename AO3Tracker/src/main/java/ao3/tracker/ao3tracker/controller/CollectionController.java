@@ -54,7 +54,7 @@ public class CollectionController {
                 addDto.getFanficId(),addDto.getCollectionId())),HttpStatus.OK);
     }
 
-    @GetMapping()
+    @GetMapping("/user={userId}")
     public ResponseEntity<List<AllCollectionDto>> fetchCollectionsByOwner(@PathVariable Integer userId){
         List<Collection> collections = collectionService.getCollectionByOwner(userId);
         if(collections!=null){

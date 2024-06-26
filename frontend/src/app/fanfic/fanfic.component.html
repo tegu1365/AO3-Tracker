@@ -1,20 +1,21 @@
 <mat-card class="fanfic-card">
   <mat-card-header>
-    <mat-card-title>Fanfic Name</mat-card-title>
-    <mat-card-subtitle>Author</mat-card-subtitle>
-    <p class="fandom-name">Fandom</p>
+    <mat-card-title>{{fanfic.title}}</mat-card-title>
+    <mat-card-subtitle>{{fanfic.author}}</mat-card-subtitle>
+    <p class="fandom-name">{{fanfic.fandom}}</p>
   </mat-card-header>
   <mat-card-content>
     <p>Summary</p>
-    <p class="summary">summary text</p>
+    <p class="summary">{{fanfic.summary}}</p>
     <mat-divider></mat-divider>
     <div class="info">
-      <p>Date Started:</p>
-      <p>Last Update:</p>
-      <p>Current Chapters:</p>
-      <p>Word Count:</p>
-      <p>Status:</p>
+      <p>Date Started: {{fanfic.dateStarted}}</p>
+      <p>Last Update: {{fanfic.dataUploaded}}</p>
+      <p>Current Chapters: {{fanfic.chapterCurrently}}</p>
+      <p>Word Count: {{fanfic.wordCount}}</p>
+      <p>Status: {{fanfic.status}}</p>
     </div>
+    @if(inLibrary){
     <div class="library-info" [hidden] = "!isShow">
       <p>Library Tag</p>
       <p>Started Reading: </p>
@@ -24,10 +25,15 @@
         <mat-chip>...</mat-chip>
       </mat-chip-set>
     </div>
+    }
   </mat-card-content>
   <mat-card-actions>
-    <button mat-flat-button (click)="openDialog()">Edit</button>
-    <button mat-flat-button (click) = toggleDisplay()>Show info</button>
+    @if(inLibrary){
+      <button mat-flat-button (click)="openDialog()">Edit</button>
+      <button mat-flat-button (click) = toggleDisplay()>Show info</button>
+    }@else{
+      <button mat-flat-button (click)="openDialog()">Add</button>
+    }
   </mat-card-actions>
   <mat-card-footer>
   </mat-card-footer>

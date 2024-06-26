@@ -2,7 +2,7 @@ import {User} from "./users";
 import {Fanfic} from "./fanfic";
 
 export interface Collection {
-    id: number;
+    id?: number;
     ownerId?: User;
     name?: string;
     description?: string;

@@ -17,7 +17,7 @@ public class FanficController {
     @Autowired
     private FanficMapper fanficMapper;
 
-    @PostMapping
+    @GetMapping
     public ResponseEntity<FanficDto> fetchFanfic(@RequestParam String url){
         Fanfic fanfic=fanficService.findByUrl(url);
         if(fanfic==null){

@@ -17,5 +17,8 @@ export class LibraryService {
     return this.http.put('/api/library/add', fanfic);
   }
 
+  public ExistingLibrary(userId: number, fanficId: number | undefined):Observable<Library>{
+    return this.http.post<Library>('/api/library/exist', {userId,fanficId});
+  }
  // UpdateLibraryData
 }

@@ -6,14 +6,18 @@
     <mat-hint align="start"><strong>Paste link from AO3</strong> </mat-hint>
     <mat-hint align="end">{{link.value.length}} / 256</mat-hint>
   </mat-form-field>
-</form>
-<button mat-flat-button>Search</button>
-</div>
-<!-- if searched-->
-<div>
-  <app-fanfic></app-fanfic>
-</div>
+  <button mat-flat-button (click)="Search(link.value)">Search</button>
 
-<p class="warning">The fanfic cannot be reached. Hint: See if the fanfic is only for logged in AO3 users.
-  Our app does not support login in AO3.</p>
+</form>
+</div>
+  @if(isSearch){
+    @if (haveFanfic){
+    <div>
+      <app-fanfic [fanfic]="fanfic"></app-fanfic>
+    </div>
+    }@else{
+    <p class="warning">The fanfic cannot be reached. Hint: See if the fanfic is only for logged in AO3 users.
+        Our app does not support login in AO3.</p>
+    }
+  }
 </div>

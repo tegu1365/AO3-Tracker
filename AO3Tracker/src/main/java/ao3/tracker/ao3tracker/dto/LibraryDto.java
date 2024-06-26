@@ -14,7 +14,7 @@ import java.util.List;
 public class LibraryDto
 {
     private  Integer id;
-    private Users userId; // one to many
+    private UsersDto userId; // one to many
     private FanficDto fanficId; // one to many
     private Integer readChapters;
     private Date startedDate;
