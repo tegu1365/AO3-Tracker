@@ -2,9 +2,8 @@
 <mat-toolbar color="primary">
   <a mat-flat-button routerLink="/new_collection">Create New Collection</a>
   @for(collection of collections; track collection){
-   <a mat-flat-button>{{collection.name}}</a>
+   <a mat-flat-button (click)="onClick({{collection.id}})">{{collection.name}}</a>
   }
 </mat-toolbar>
-
-<app-collection-info></app-collection-info>
+@if(cId != -1){ <app-collection-info [cId]="cId"></app-collection-info> }
 </div>
