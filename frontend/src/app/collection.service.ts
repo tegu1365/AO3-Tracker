@@ -14,7 +14,7 @@ export class CollectionService {
     return this.http.post('/api/collection/create', {description, name, ownerId});
   }
 
-  public GetCollection(id: number): Observable<Collection> {
+  public GetCollection(id: number | undefined): Observable<Collection> {
     return this.http.get<Collection>('/api/collection/'+id );
   }
 

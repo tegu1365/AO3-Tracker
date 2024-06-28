@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import {Component, Input, numberAttribute} from '@angular/core';
 import {MatDivider} from "@angular/material/divider";
 import {FanficComponent} from "../fanfic/fanfic.component";
 import { Collection } from '../collection';
@@ -15,8 +15,8 @@ import { CollectionService } from '../collection.service';
   styleUrl: './collection-info.component.css'
 })
 export class CollectionInfoComponent {
-  @Input()
-  cId : number = -1;
+  @Input({transform: numberAttribute})
+  cId : number | undefined = -1;
   collection :Collection = {} as Collection;
   constructor(private cService: CollectionService)
   {

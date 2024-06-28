@@ -20,7 +20,7 @@ import {CollectionService} from "../collection.service";
 })
 export class CollectionsComponent {
   collections: Collection[] = [];
-  cId : number = -1;
+  cId : number | undefined = -1;
   constructor(private collectionService: CollectionService) {
     let userId=Number(localStorage.getItem("userId"));
     this.collectionService.getUserCollections(userId).subscribe(
@@ -30,7 +30,8 @@ export class CollectionsComponent {
       }
     )
   }
-  onClick(id: number)
+
+  onClick(id: number | undefined)
   {
     this.cId = id;
   }
