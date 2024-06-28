@@ -1,32 +1,44 @@
-import {Component, inject, model} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {
   MAT_DIALOG_DATA,
   MatDialogActions,
   MatDialogClose,
   MatDialogContent,
-  MatDialogRef, MatDialogTitle
+  MatDialogRef,
+  MatDialogTitle
 } from "@angular/material/dialog";
-import {MatFormField, MatFormFieldModule, MatLabel} from "@angular/material/form-field";
-import {MatButton, MatButtonModule} from "@angular/material/button";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatButtonModule} from "@angular/material/button";
 import {FormControl, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {
   MatDatepicker,
   MatDatepickerActions,
-  MatDatepickerInput, MatDatepickerModule,
+  MatDatepickerInput,
+  MatDatepickerModule,
   MatDatepickerToggle
 } from "@angular/material/datepicker";
 import {MatOption, MatSelect} from "@angular/material/select";
 import {MatIcon} from "@angular/material/icon";
 import {MatNativeDateModule} from "@angular/material/core";
+import {Collection} from "../collection";
+import {CollectionService} from "../collection.service";
+import {LibraryService} from "../library.service";
+import {Library} from "../library";
+import {UsersService} from "../users.service";
+import {Fanfic} from "../fanfic";
+import {FanficService} from "../fanfic.service";
+import {LibraryTag} from "../library-tag";
 
 interface Tag {
-  value: string;
+  value: LibraryTag;
   viewValue: string;
 }
+
 export interface DialogData {//change to fanfic
-  title:string;
-  result: string;
+  title: string;
+  fanficId: number;
+  library: Library;
 }
 
 
@@ -61,18 +73,53 @@ export interface DialogData {//change to fanfic
 export class EditFanficComponent {
   readonly dialogRef = inject(MatDialogRef<EditFanficComponent>);
   readonly data = inject<DialogData>(MAT_DIALOG_DATA);
-  readonly result = model(this.data.result);
-  selectedValue: any;
+  library: Library = {} as Library;
+  fanfic: Fanfic = {} as Fanfic;
   value = 0;
-  libraryTags: Tag[]=[
-    {value: 'PlanToRead', viewValue: 'Plan to Read'},
-    {value: 'Reading', viewValue: 'Reading'},
-    {value: 'Read', viewValue: 'Read'},
-    {value: 'OnHold', viewValue: 'On Hold'},
-    {value: 'Dropped', viewValue: 'Dropped'},
+  libraryTags: Tag[] = [
+    {value: LibraryTag.plan, viewValue: 'Plan to Read'},
+    {value: LibraryTag.reading, viewValue: 'Reading'},
+    {value: LibraryTag.read, viewValue: 'Read'},
+    {value: LibraryTag.onHold, viewValue: 'On Hold'},
+    {value: LibraryTag.drop, viewValue: 'Dropped'},
   ];
   collections = new FormControl('');
-  userCollection: string[] = ['a', 'b', 'c', 'd', 'e', 'g'];
+  userCollection: Collection[] = [];
+  userId: number = 0;
+
+  constructor(private cService: CollectionService,
+              private libraryService: LibraryService,
+              private userService: UsersService,
+              private fanficService: FanficService) {
+    this.userId = Number(localStorage.getItem("userId"));
+
+    this.cService.getUserCollections(this.userId).subscribe(
+      value => {
+        this.userCollection = value;
+      }
+    );
+  }
+
+  Save() {
+    this.userService.GetUser(this.userId).subscribe(
+      value1 => {
+        this.library.Users = value1;
+      }
+    );
+    this.fanficService.GetFanficById(this.data.fanficId).subscribe(
+      value1 => {
+        this.fanfic = value1;
+      }
+    );
+    this.library.fanficId = this.fanfic;
+    console.log(this.library);
+    this.libraryService.FanficToLibrary(this.library).subscribe(
+      value1 => {
+        console.log(value1);
+      }
+    );
+  }
+
   onNoClick(): void {
     this.dialogRef.close();
   }

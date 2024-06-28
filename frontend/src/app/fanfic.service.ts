@@ -16,7 +16,7 @@ export class FanficService {
   }
 
   public GetFanficById(id: number): Observable<any> {
-    return this.http.get<Fanfic>('/api/fanfic/id='+id);
+    return this.http.post<Fanfic>('/api/fanfic/id='+id,{});
   }
 
  // GetAllCollectionOfFic

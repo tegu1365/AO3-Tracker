@@ -1,0 +1,19 @@
+
+div{
+  display: flex;
+  flex-direction: column;
+  row-gap: 3%;
+}
+.all{
+
+  margin-left: 3%;
+}
+
+.forms{
+
+  width: 30%;
+}
+
+button{
+  width: 20%;
+}

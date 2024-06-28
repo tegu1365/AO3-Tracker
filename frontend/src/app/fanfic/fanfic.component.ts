@@ -53,7 +53,7 @@ export class FanficComponent {
   }
   openDialog(){
     const dialogRef = this.dialog.open(EditFanficComponent, {
-      data: {title: "Fanfic Title",result:this.library},
+      data: {title: this.fanfic.title, fanficId:this.fanfic.id , library: this.library},
     });
 
     dialogRef.afterClosed().subscribe(result => {

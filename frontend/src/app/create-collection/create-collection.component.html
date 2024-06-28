@@ -1,5 +1,6 @@
+<div class="all">
 <h3>Create collection</h3>
-
+<div class="forms">
 <mat-form-field class="name">
   <mat-label>Name</mat-label>
   <input matInput type="text" #name>
@@ -9,5 +10,6 @@
   <mat-label>Description</mat-label>
   <textarea matInput #description placeholder="Collection for ..."></textarea>
 </mat-form-field>
-
+</div>
 <button mat-flat-button (click)="Create(description.value, name.value)">Create</button>
+</div>
