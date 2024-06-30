@@ -13,7 +13,7 @@ import java.util.List;
 @Data
 public class LibraryDto
 {
-    private  Integer id;
+    private Integer id;
     private UsersDto userId; // one to many
     private FanficDto fanficId; // one to many
     private Integer readChapters;

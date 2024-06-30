@@ -1,3 +1,4 @@
+<div class="fanfic">
 <mat-card class="fanfic-card">
   <mat-card-header>
     <mat-card-title>{{fanfic.title}}</mat-card-title>
@@ -17,10 +18,10 @@
     </div>
     @if(inLibrary){
     <div class="library-info" [hidden] = "!isShow">
-      <p>Library Tag</p>
-      <p>Started Reading: </p>
-      <p>Last Read: </p>
-      <p>Chapter: </p>
+      <p>{{library.tag}}</p>
+      <p>Started Reading: {{library.startedDate}}</p>
+      <p>Last Read: {{library.lastRead}}</p>
+      <p>Chapter: {{library.readChapters}}</p>
       <mat-chip-set aria-label="0">
         <mat-chip>...</mat-chip>
       </mat-chip-set>
@@ -28,13 +29,17 @@
     }
   </mat-card-content>
   <mat-card-actions>
-    @if(inLibrary){
-      <button mat-flat-button (click)="openDialog()">Edit</button>
+   <!-- @if(inLibrary){-->
+      <button mat-flat-button (click)="openLibrary()">Edit</button>
       <button mat-flat-button (click) = toggleDisplay()>Show info</button>
-    }@else{
-      <button mat-flat-button (click)="openDialog()">Add</button>
-    }
+  <!--  }@else{
+      <button mat-flat-button (click)="openLibrary()">Add</button>
+    }-->
   </mat-card-actions>
   <mat-card-footer>
   </mat-card-footer>
 </mat-card>
+@if(isLibrary){
+  <app-edit-fanfic [data]="this.data"></app-edit-fanfic>
+}
+</div>

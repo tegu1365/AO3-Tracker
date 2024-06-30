@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.ToString;
 
 @Data
 @Entity
@@ -12,9 +13,11 @@ public class Library
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private  Integer id;
+    @ToString.Exclude
     @ManyToOne
     @JoinColumn(name="userId")
     private Users userId; // one to many
+    @ToString.Exclude
     @ManyToOne
     @JoinColumn(name="fanficId")
     private Fanfic fanficId; // one to many

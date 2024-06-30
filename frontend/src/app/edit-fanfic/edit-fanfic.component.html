@@ -1,5 +1,6 @@
+<div class="edit-conteiner">
 <h3 mat-dialog-title>{{data.title}}</h3>
-<mat-dialog-content>
+<!--<mat-dialog-content>-->
   <mat-form-field>
     <mat-label>Chapters</mat-label>
     <input matInput type="number" [(ngModel)]="library.readChapters">
@@ -34,8 +35,11 @@
     <mat-label>Tags</mat-label>
     <textarea matInput placeholder="tag1, tag2, tag3..."></textarea>
   </mat-form-field>
-</mat-dialog-content>
+<button mat-flat-button (click)="Close()">Close</button>
+<button mat-flat-button (click)="Save()">Ok</button>
+</div>
+<!--</mat-dialog-content>
 <mat-dialog-actions>
   <button mat-button (click)="onNoClick()">No Thanks</button>
   <button mat-button [mat-dialog-close]="Save()" cdkFocusInitial>Ok</button>
-</mat-dialog-actions>
+</mat-dialog-actions>-->

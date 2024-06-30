@@ -66,3 +66,9 @@ mat-card-actions{
 [hidden] {
   display: none !important;
 }
+
+.fanfic{
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}

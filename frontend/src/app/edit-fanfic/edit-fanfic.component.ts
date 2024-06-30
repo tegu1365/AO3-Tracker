@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, Input, OnInit, signal} from '@angular/core';
 import {
   MAT_DIALOG_DATA,
   MatDialogActions,
@@ -70,9 +70,11 @@ export interface DialogData {//change to fanfic
 })
 
 
-export class EditFanficComponent {
-  readonly dialogRef = inject(MatDialogRef<EditFanficComponent>);
-  readonly data = inject<DialogData>(MAT_DIALOG_DATA);
+export class EditFanficComponent implements OnInit{
+  //readonly dialogRef = inject(MatDialogRef<EditFanficComponent>);
+  //readonly data = inject<DialogData>(MAT_DIALOG_DATA);
+  @Input()
+  data: DialogData={} as DialogData;
   library: Library = {} as Library;
   fanfic: Fanfic = {} as Fanfic;
   value = 0;
@@ -91,36 +93,53 @@ export class EditFanficComponent {
               private libraryService: LibraryService,
               private userService: UsersService,
               private fanficService: FanficService) {
-    this.userId = Number(localStorage.getItem("userId"));
-
-    this.cService.getUserCollections(this.userId).subscribe(
-      value => {
-        this.userCollection = value;
-      }
-    );
   }
+  ngOnInit(){
+    if(this.data.library!=null){
+      this.library=this.data.library;
+    }else {
+      this.userId = Number(localStorage.getItem("userId"));
+     // console.log(this.data);
+     // console.log(this.userId);
+      this.cService.getUserCollections(this.userId).subscribe(
+        value => {
+          this.userCollection = value;
+        }
+      );
+      this.userService.GetUser(this.userId).subscribe(
+        value1 => {
+          //console.log("This User:");
 
+          console.log(value1);
+          this.library.userId = value1;
+        }
+      );
+      this.fanficService.GetFanficById(this.data.fanficId).subscribe(
+        value1 => {
+          this.fanfic = value1;
+          this.library.fanficId = value1;
+        }
+      );
+    }
+      console.log("This after init Lib:");
+      console.log(this.library);
+  }
   Save() {
-    this.userService.GetUser(this.userId).subscribe(
-      value1 => {
-        this.library.Users = value1;
-      }
-    );
-    this.fanficService.GetFanficById(this.data.fanficId).subscribe(
-      value1 => {
-        this.fanfic = value1;
-      }
-    );
-    this.library.fanficId = this.fanfic;
+    console.log("Lib before send:");
     console.log(this.library);
     this.libraryService.FanficToLibrary(this.library).subscribe(
       value1 => {
+        console.log("Return Lib:");
+
         console.log(value1);
       }
     );
   }
 
-  onNoClick(): void {
-    this.dialogRef.close();
+  Close(){
+
   }
+ /* onNoClick(): void {
+    this.dialogRef.close();
+  }*/
 }

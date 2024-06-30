@@ -23,11 +23,14 @@ export class LibraryComponent {
     let userId= Number(localStorage.getItem("userId"));
     this.usersService.GetUser(userId).subscribe(
       value => {
+        console.log(value);
         this.user = value;
       }
     );
     this.libraryService.GetLibrary(userId).subscribe(
-      value => {this.libraries = value;}
+      value => {
+        console.log(value);
+        this.libraries = value;}
     );
   }
 

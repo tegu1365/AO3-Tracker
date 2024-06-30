@@ -46,7 +46,8 @@ public class LibraryService {
         if(userId!=null && fanficId!=null) {
             Users user = userService.findById(userId);
             Fanfic fanfic = fanficService.findById(fanficId);
-            return libraryRepository.findByUserIdAndFanficId(user, fanfic);
+            Library library=libraryRepository.findByUserIdAndFanficId(user, fanfic);
+            return library;
         }
         return null;
     }

@@ -34,7 +34,7 @@ export class SearchFanficComponent {
     console.log(this.url);
     this.fanficService.GetFanfic(this.url).subscribe(
       value => {
-        //console.log(value);
+       // console.log(value);
         this.fanfic = value;
         this.haveFanfic=true;
         //console.log(this.fanfic);
