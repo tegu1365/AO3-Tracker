@@ -17,8 +17,8 @@ Our app allows to:
 
 ## Git flow
 
-At the moment the latest version is on fe-components branch because we are working on connecting front and back-end.
-Many of the branches are for different parts of the project mostly to allow some parallel dev but are more leanier due to organization work.
+At the moment the latest version is on main branch. And we are working on connecting front and back-end on the fe-component brach.
+Many of the branches are for different parts of the project mostly to allow some parallel dev but are more leanier due to organization work between us.
 
 ## Architecture
 The project is standart layers architecture for Rest with SpringBoot with two main parts: Back-end and Front-end;
@@ -68,3 +68,4 @@ List of all software technologies used during the development process:
 
 Last step: Navigate to http://localhost:4200/
 
+Created by [Teodora Petkova](https://github.com/tegu1365) and [Mincho Hristov](https://github.com/Alwolfdeadman)
