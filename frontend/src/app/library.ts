@@ -4,7 +4,7 @@ import {LibraryTag} from "./library-tag";
 
 export interface Library {
     id?: number;
-    Users: User;
+    userId: User;
     fanficId: Fanfic;
     readChapters?: number;
     startedDate?: Date;
