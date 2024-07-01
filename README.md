@@ -13,7 +13,7 @@ Our app allows to:
 - Users can track what chapter they were on and when via Library
 - Users can use plan tags for their fanfic
 - Users can create Collections with description and name;
-- Users can add Fanfic to collections
+- Users can add Fanfic to Collections and view them(still in work on front end)
 
 ## Git flow
 
@@ -55,7 +55,8 @@ List of all software technologies used during the development process:
 ## ⚙️ Setup
 
 1. Clone this repo
-2. Open the back-end project in IDE (Intellij Idea)
+2. Open the back-end project in IDE (Intellij Idea) 
+-it may need changes on passwords for PostgresSQL and the database name
 3. Press the 'run button'
 4. Open the front-end project in IDE:
 ### if with VS Code:
