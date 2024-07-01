@@ -35,7 +35,7 @@ public class LibraryService {
     }
 
     public Library updateLibrary(Library library) {
-        return  libraryRepository.save(library);
+        return libraryRepository.save(library);
     }
 
     public void removeLibrary(Integer id) {
