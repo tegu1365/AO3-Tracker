@@ -1,23 +1,24 @@
 {
 	"info": {
-		"_postman_id": "40294494-6591-4864-a3b2-ecd06bd95b68",
+		"_postman_id": "7c623972-82b7-461a-ab12-1d0a304bec3e",
 		"name": "AO3-Tracker",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "34072608"
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "34072614"
 	},
 	"item": [
 		{
 			"name": "GetFanfic",
 			"request": {
-				"method": "POST",
+				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/fanfic?url=https://archiveofourown.org/works/33226210/chapters/82496638",
+					"raw": "localhost:8080/api/fanfic?url=https://archiveofourown.org/works/33226210/chapters/82496638",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
+						"api",
 						"fanfic"
 					],
 					"query": [
@@ -45,17 +46,7 @@
 						}
 					}
 				},
-				"url": {
-					"raw": "localhost:8080/fanfic/id=202",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"fanfic",
-						"id=202"
-					]
-				}
+				"url": "localhost:8080/api/fanfic/id=1"
 			},
 			"response": []
 		},
@@ -64,17 +55,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": {
-					"raw": "localhost:8080/collection/fanfic_id=0",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"collection",
-						"fanfic_id=0"
-					]
-				}
+				"url": "localhost:8080/api/collection/fanfic_id=1"
 			},
 			"response": []
 		},
@@ -83,17 +64,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": {
-					"raw": "localhost:8080/collection/0",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"collection",
-						"0"
-					]
-				}
+				"url": "localhost:8080/api/collection/1"
 			},
 			"response": []
 		},
@@ -103,12 +74,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/library?userId=1",
+					"raw": "localhost:8080/api/library?userId=1",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
+						"api",
 						"library"
 					],
 					"query": [
@@ -126,27 +98,14 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": {
-					"raw": "localhost:8080/user/1",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"user",
-						"1"
-					]
-				}
+				"url": "localhost:8080/api/user/1"
 			},
 			"response": []
 		},
 		{
 			"name": "Login",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
@@ -157,45 +116,25 @@
 						}
 					}
 				},
-				"url": {
-					"raw": "localhost:8080/user/login",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"user",
-						"login"
-					]
-				}
+				"url": "localhost:8080/api/user/login"
 			},
 			"response": []
 		},
 		{
 			"name": "AddFanficToLibrary",
 			"request": {
-				"method": "POST",
+				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"userId\": {\r\n        \"id\": 1,\r\n        \"username\": \"tegu\",\r\n        \"email\": \"tegu@new.us\",\r\n        \"password\": \"1234\"\r\n    },\r\n    \"fanficId\": {\r\n        \"id\": 252,\r\n        \"title\": \"\\\"Crybaby Hero\\\"︱泣き虫ヒーロー\",\r\n        \"author\": \"Anonymous\",\r\n        \"url\": \"https://archiveofourown.org/works/33226210\",\r\n        \"fandom\": \" ,東京卍リベンジャーズ | Tokyo Revengers (Manga) 東京卍リベンジャーズ | Tokyo Revengers (Anime) ,\",\r\n        \"summary\": null,\r\n        \"dateStarted\": \"2021-08-13\",\r\n        \"dataUploaded\": \"2023-12-13\",\r\n        \"chapterCurrently\": 18,\r\n        \"chapterExpected\": \"?\",\r\n        \"status\": \"ongoing\",\r\n        \"wordCount\": 32095,\r\n        \"libraries\": null\r\n    },\r\n    \"readChapters\": 0,\r\n    \"startedDate\": \"2023-09-09\",\r\n    \"lastRead\": \"2023-10-09\",\r\n    \"tag\": 1,\r\n    \"customTags\": []\r\n}",
+					"raw": "{\r\n    \"userId\": {\r\n        \"id\": 1,\r\n        \"username\": \"tegu\",\r\n        \"email\": \"tegu@new.us\",\r\n        \"password\": \"1234\"\r\n    },\r\n    \"fanficId\": {\r\n        \"id\": 2,\r\n        \"title\": \"\\\"Crybaby Hero\\\"︱泣き虫ヒーロー\",\r\n        \"author\": \"Anonymous\",\r\n        \"url\": \"https://archiveofourown.org/works/33226210\",\r\n        \"fandom\": \" ,東京卍リベンジャーズ | Tokyo Revengers (Manga) 東京卍リベンジャーズ | Tokyo Revengers (Anime) ,\",\r\n        \"summary\": \"Inspired by @flower_wannabe’s tweet: “I present to you, Shinichiro and Takemichi being high school best friends. Takemichi is literally every Toman’s member first love, because he is so cool and is Shinchiro’s best friend, Mikey has like him since he remembered and was so pissed to have to share Take-onisan. It would be so cool! Like I can picture little Mikey and the founding gang hanging around them, all heart eyes and falling to get praised by Michi, or fighting and getting intentionally hurt because they could go to him to get patched out.”  Or: it took me 2 years to finally work on the revamp I promised\",\r\n        \"dateStarted\": \"2021-08-13T00:00:00.000+00:00\",\r\n        \"dataUploaded\": \"2023-12-13T00:00:00.000+00:00\",\r\n        \"chapterCurrently\": 18,\r\n        \"chapterExpected\": \"?\",\r\n        \"status\": \"ongoing\",\r\n        \"wordCount\": 32095,\r\n        \"libraries\": null\r\n    },\r\n    \"readChapters\": 0,\r\n    \"startedDate\": \"2023-09-09\",\r\n    \"lastRead\": \"2023-10-09\",\r\n    \"tag\": \"Read\",\r\n    \"customTags\": []\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
 						}
 					}
 				},
-				"url": {
-					"raw": "localhost:8080/library/add",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"library",
-						"add"
-					]
-				}
+				"url": "localhost:8080/api/library/add"
 			},
 			"response": []
 		},
@@ -206,25 +145,14 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"collectionId\":0,\r\n    \"fanficId\":0\r\n}",
+					"raw": "{\r\n    \"collectionId\":1,\r\n    \"fanficId\":1\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
 						}
 					}
 				},
-				"url": {
-					"raw": "localhost:8080/fanfic/collection/add",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"fanfic",
-						"collection",
-						"add"
-					]
-				}
+				"url": "localhost:8080/api/collection/add"
 			},
 			"response": []
 		},
@@ -235,24 +163,14 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"ownerId\":0,\r\n    \"name\":\"New collection\",\r\n    \"description\":\"Creating collection\"\r\n}",
+					"raw": "{\r\n    \"ownerId\":1,\r\n    \"name\":\"New collection\",\r\n    \"description\":\"Creating collection\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
 						}
 					}
 				},
-				"url": {
-					"raw": "localhost:8080/collection/add",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"collection",
-						"add"
-					]
-				}
+				"url": "localhost:8080/api/collection/create"
 			},
 			"response": []
 		},
@@ -263,29 +181,19 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"username\":\"tegu\",\r\n    \"password\":\"1234\",\r\n    \"email\":\"tegu@new.us\"\r\n}",
+					"raw": "{\r\n    \"username\":\"tegu\",\r\n    \"password\":\"1234\",\r\n    \"email\":\"tegu1@new.us\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
 						}
 					}
 				},
-				"url": {
-					"raw": "localhost:8080/user/create",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"user",
-						"create"
-					]
-				}
+				"url": "localhost:8080/api/user"
 			},
 			"response": []
 		},
 		{
-			"name": "AddCustumTag",
+			"name": "AddCustumTag(TODO)",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -298,46 +206,7 @@
 						}
 					}
 				},
-				"url": {
-					"raw": "localhost:8080/fanfic/library/addTag",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"fanfic",
-						"library",
-						"addTag"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "UpdateLibraryData",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"id\":1,\r\n    \"readChapters\":20,\r\n    \"startedDate\":\"2023-09-09\",\r\n    \"lastRead\":\"2023-10-09\",\r\n    \"tag\":1\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:8080/library/update",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"library",
-						"update"
-					]
-				}
+				"url": "localhost:8080/fanfic/library/addTag"
 			},
 			"response": []
 		}
