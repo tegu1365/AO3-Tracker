@@ -1,5 +1,6 @@
 package ao3.tracker.ao3tracker.service;
 
+import ao3.tracker.ao3tracker.model.Fanfic;
 import ao3.tracker.ao3tracker.model.Library;
 import ao3.tracker.ao3tracker.model.Users;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,11 +13,13 @@ import java.util.List;
 public class LibraryService {
     private final LibraryRepository libraryRepository;
     private final UserService userService;
+    private final FanficService fanficService;
 
     @Autowired
-    public LibraryService(LibraryRepository libraryRepository, UserService userService){
+    public LibraryService(LibraryRepository libraryRepository, UserService userService,FanficService fanficService){
         this.libraryRepository=libraryRepository;
         this.userService = userService;
+        this.fanficService=fanficService;
     }
     public Library createLibrary(Library library) {
         return libraryRepository.save(library);
@@ -32,10 +35,20 @@ public class LibraryService {
     }
 
     public Library updateLibrary(Library library) {
-        return  libraryRepository.save(library);
+        return libraryRepository.save(library);
     }
 
     public void removeLibrary(Integer id) {
         libraryRepository.deleteById(id);
+    }
+
+    public Library checkExisting(Integer userId, Integer fanficId) {
+        if(userId!=null && fanficId!=null) {
+            Users user = userService.findById(userId);
+            Fanfic fanfic = fanficService.findById(fanficId);
+            Library library=libraryRepository.findByUserIdAndFanficId(user, fanfic);
+            return library;
+        }
+        return null;
     }
 }

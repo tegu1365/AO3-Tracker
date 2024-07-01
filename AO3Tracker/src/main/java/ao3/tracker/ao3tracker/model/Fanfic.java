@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.ToString;
 
 @Data
 @Entity
@@ -28,6 +29,7 @@ public class Fanfic
     private Integer wordCount;
 //    @ManyToMany
 //    private List<Collection> collections;
+    @ToString.Exclude
     @OneToMany(mappedBy="fanficId")
     private List<Library> libraries;
 

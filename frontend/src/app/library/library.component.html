@@ -1,0 +1,12 @@
+<div class="info-component">
+  <h3>{{user.username}}'s Library</h3>
+
+  <mat-divider></mat-divider>
+
+  <!--<p>Filter:</p> If i have time do filter by tags-->
+
+  <div class="fanfic-container" style="margin-top: 2%;">
+    @for(lib of libraries; track lib)
+    { <app-fanfic [fanfic]="lib.fanficId"></app-fanfic> }
+    </div>
+</div>

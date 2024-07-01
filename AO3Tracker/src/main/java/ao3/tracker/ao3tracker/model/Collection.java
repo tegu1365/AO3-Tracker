@@ -2,6 +2,8 @@ package ao3.tracker.ao3tracker.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.ToString;
+
 import java.util.List;
 
 @Data
@@ -11,12 +13,13 @@ public class Collection
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+    @ToString.Exclude
     @ManyToOne
     @JoinColumn(name="ownerId")
     private Users ownerId;
     private String name;
     private String description;
-
+    @ToString.Exclude
     @ManyToMany
     @JoinTable(
             joinColumns = @JoinColumn(name = "fanfic_id"),

@@ -10,14 +10,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/fanfic")
+@RequestMapping("/api/fanfic")
 public class FanficController {
     @Autowired
     private FanficService fanficService;
     @Autowired
     private FanficMapper fanficMapper;
 
-    @PostMapping
+    @GetMapping
     public ResponseEntity<FanficDto> fetchFanfic(@RequestParam String url){
         Fanfic fanfic=fanficService.findByUrl(url);
         if(fanfic==null){

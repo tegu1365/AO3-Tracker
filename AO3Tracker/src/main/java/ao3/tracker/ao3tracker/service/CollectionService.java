@@ -6,6 +6,7 @@ import ao3.tracker.ao3tracker.model.Users;
 import ao3.tracker.ao3tracker.repository.CollectionRepository;
 import ao3.tracker.ao3tracker.repository.FanficRepository;
 import ao3.tracker.ao3tracker.repository.UsersRepository;
+import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -64,6 +65,14 @@ public class CollectionService {
         if(collection.isPresent()&&fanfic.isPresent()){
             collection.get().getFanfics().add(fanfic.get());
             return collectionRepository.save(collection.get());
+        }
+        return null;
+    }
+
+    public List<Collection> getCollectionByOwner(Integer ownerId){
+        Optional<Users> users= usersRepository.findById(ownerId);
+        if(!users.isEmpty()) {
+            return collectionRepository.findByOwnerId(users.get());
         }
         return null;
     }

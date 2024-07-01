@@ -1,0 +1,22 @@
+h3{
+  color: brown;
+}
+
+.fanfic-container{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  row-gap: 20px;
+  column-gap: 2%;
+}
+
+.info-component{
+  display: flex;
+  flex-direction: column;
+  gap:1%;
+  margin-left: 2%;
+}
+
+app-fanfic{
+  width: 45%;
+}

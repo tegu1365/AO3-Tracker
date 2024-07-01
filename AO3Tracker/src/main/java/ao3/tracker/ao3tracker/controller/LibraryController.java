@@ -1,6 +1,7 @@
 package ao3.tracker.ao3tracker.controller;
 
 import ao3.tracker.ao3tracker.dto.LibraryDto;
+import ao3.tracker.ao3tracker.dto.LibraryExistDto;
 import ao3.tracker.ao3tracker.dto.LibraryUpdateDto;
 import ao3.tracker.ao3tracker.dto.UsersLibraryDto;
 import ao3.tracker.ao3tracker.mapper.LibraryMapper;
@@ -17,7 +18,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/library")
+@RequestMapping("/api/library")
 public class LibraryController {
     @Autowired
     private LibraryService libraryService;
@@ -39,7 +40,7 @@ public class LibraryController {
     }
 
 
-    @PostMapping("/add")
+    @PutMapping("/add")
     public ResponseEntity<LibraryDto> addFanficToLibrary(@RequestBody LibraryDto libraryDto) {
         Library library=libraryMapper.mapFromDto(libraryDto);
         return new ResponseEntity<>(libraryMapper.mapToDto(libraryService.createLibrary(library)),HttpStatus.CREATED);
@@ -49,5 +50,10 @@ public class LibraryController {
     public  ResponseEntity<LibraryUpdateDto> updateLibraryData(@RequestBody LibraryUpdateDto libraryUpdateDto){
         Library library=libraryUpdateMapper.mapFromDto(libraryUpdateDto);
         return new ResponseEntity<>(libraryUpdateMapper.mapToDto(libraryService.updateLibrary(library)),HttpStatus.OK);
+    }
+
+    @PostMapping("/exist")
+    public  ResponseEntity<LibraryDto> updateLibraryData(@RequestBody LibraryExistDto libraryExistDto){
+        return new ResponseEntity<>(libraryMapper.mapToDto(libraryService.checkExisting(libraryExistDto.getUserId(),libraryExistDto.getFanficId())),HttpStatus.OK);
     }
 }

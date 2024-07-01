@@ -8,6 +8,8 @@ import ao3.tracker.ao3tracker.scraper.Ao3Scrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class FanficService {
    private final FanficRepository fanficRepository;
@@ -21,8 +23,32 @@ public class FanficService {
     }
 
     public  Fanfic createFanficByUrl(String url){
-        Ao3Scrapper scrapper=new Ao3Scrapper(url);
-        if(!scrapper.isNull) {return fanficRepository.save(scrapper.ParseToFanfic());}
+       String link="";
+        if(url.lastIndexOf('c')!=-1) {
+            link = url.substring(0, url.lastIndexOf('c') - 1);
+        }else{
+            link=url;
+        }
+       Optional<Fanfic> fanfic=fanficRepository.findByUrl(link);
+       if(fanfic.isEmpty()) {
+           Ao3Scrapper scrapper = new Ao3Scrapper(url);
+           if (!scrapper.isNull) {
+               return fanficRepository.save(scrapper.ParseToFanfic());
+           }
+       }
+       if(fanfic.isPresent()){
+           Ao3Scrapper scrapper = new Ao3Scrapper(url);
+           Fanfic current= scrapper.ParseToFanfic();
+           fanfic.get().setFandom(current.getFandom());
+           fanfic.get().setChapterCurrently(current.getChapterCurrently());
+           fanfic.get().setSummary(current.getSummary());
+           fanfic.get().setAuthor(current.getAuthor());
+           fanfic.get().setDataUploaded(current.getDataUploaded());
+           fanfic.get().setWordCount(current.getWordCount());
+           fanfic.get().setChapterExpected(current.getChapterExpected());
+           fanfic.get().setStatus(current.getStatus());
+           return fanficRepository.save(fanfic.get());
+       }
         //else{
             //cannot create message
         //}
