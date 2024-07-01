@@ -39,16 +39,17 @@ The database schema:
 ![alt text](/AO3_Tracker.png)
 
 ## Endpoints
-[title](/AO3-Tracker.postman_collection.json)
+[Postman Collection](/AO3-Tracker.postman_collection.json)
 
 ## Software Technologies
 List of all software technologies used during the development process:
-- Java 11
+- Java 21
 - Spring Boot
 - Hibernate
 - DB integration( PostgreSQL)
+- JSoup
 - Git
-- Angular
+- Angular 18 
 - Postman
 - Flyway
 

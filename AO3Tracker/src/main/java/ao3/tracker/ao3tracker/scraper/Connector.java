@@ -4,7 +4,7 @@ import org.jsoup.nodes.*;
 
 import java.io.IOException;
 
-public class Connector {
+public class Connector {21
     Document doc;
     public Connector(String link) {
         //System.out.println(Parse(link));
