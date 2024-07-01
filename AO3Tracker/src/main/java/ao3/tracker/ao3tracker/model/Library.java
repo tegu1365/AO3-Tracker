@@ -26,6 +26,7 @@ public class Library
     private Date lastRead;
     @Enumerated(EnumType.STRING)
     private Tag tag;
+    @ToString.Exclude
     @ManyToMany
     @JoinTable(
 //            name = "customTag_library",
